@@ -19,7 +19,7 @@ public class FileEx06 {
 		int[] vector = null;
 		int count = 0;
 		
-		String fileName = "vector.txt";
+		String fileName = "vector2.txt";
 		
 		while(true) {
 			
