@@ -38,10 +38,9 @@ public class FileEx05 {
 					}
 					data += line;
 					data += "\n";
-					System.out.println(line  + " 1");
 				}
 				
-				data = data.substring(0, data.length()-1);
+				data = data.substring(0, data.length()-1);		//맨 마지막 \n 제거
 				
 				String[] temp = data.split("\n");
 				size = temp.length;
@@ -58,7 +57,7 @@ public class FileEx05 {
 				}
 				
 				for(int i=0; i<size; i++) {
-					System.out.println(ids[i] + ":" + pws[i] + ":" + moneys[i]);
+					System.out.println(ids[i] + "/" + pws[i] + "/" + moneys[i]);
 				}
 
 				fr.close();

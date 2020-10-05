@@ -13,7 +13,7 @@ public class FileEx01 {
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(fileName);
-			fw.write("파일저장하기 연습문제");
+			fw.write("파일저장하기 연습문제1");
            fw.close();
 		}catch(Exception e) {
 			e.printStackTrace();
