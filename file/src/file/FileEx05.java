@@ -38,6 +38,7 @@ public class FileEx05 {
 					}
 					data += line;
 					data += "\n";
+					System.out.println(line  + " 1");
 				}
 				
 				data = data.substring(0, data.length()-1);
