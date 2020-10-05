@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.File;
 
 public class FileEx06 {
 
@@ -13,13 +14,12 @@ public class FileEx06 {
 
 		Scanner scan = new Scanner(System.in);
 		
-		FileReader fr = null;
-		BufferedReader br = null;
+		
 		
 		int[] vector = null;
 		int count = 0;
 		
-		String fileName = "vector2.txt";
+		String fileName = "vector.txt";
 		
 		while(true) {
 			
@@ -57,6 +57,7 @@ public class FileEx06 {
 					System.out.print(vector[i] + " ");
 						
 				}
+				System.out.println();
 				
 			}
 			
@@ -103,6 +104,7 @@ public class FileEx06 {
 				for(int i = 0; i < vector.length; i++) {
 					System.out.print(vector[i] + " ");
 				}
+				System.out.println();
 			}
 			
 			//저장
@@ -134,7 +136,38 @@ public class FileEx06 {
 			}
 			
 			//로드
-			else if(sel == 4) {}
+			else if(sel == 4) {
+				File file = new File(fileName);
+				
+				FileReader fr = null;
+				BufferedReader br = null;
+				String data = "";
+				
+				if(file.exists()) {
+					try {
+						fr = new FileReader(file);
+						br = new BufferedReader(fr);
+						
+						while(true) {
+							String line = br.readLine();
+							if(line == null) {
+								break;
+							}
+							data += line + "\n";
+						}
+						data = data.substring(0, data.length() - 1);
+						
+						System.out.println(data);
+						
+						fr.close();
+						br.close();
+					}
+					catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			
+			}
 			
 			//종료
 			else if(sel == 5) {
