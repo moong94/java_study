@@ -17,7 +17,7 @@ public class FileEx08 {
 		String[] items = { "사과", "바나나", "딸기" };
 
 		final int MAX_SIZE = 100;
-		int[][] jang = new int[MAX_SIZE][3];
+		int[][] jang = new int[MAX_SIZE][2];
 
 		String fileName = "jang.txt";
 
@@ -91,36 +91,24 @@ public class FileEx08 {
 			
 			//쇼핑
 			else if (sel == 3) {
-				
 				if(log == -1) {
-					System.out.println("로그인 후 이용하세요.");
+					System.out.println("로그인 후 사용하세요.");
 					continue;
 				}
 				
-				for(int i = 0; i < items.length; i++) {
-					System.out.println((i + 1) + ". " + items[i]);
-				}
-				System.out.print("구매할 상품 : ");
-				int itemnum = scan.nextInt();
+				System.out.print("1. 사과 \n2. 바나나\n3. 딸기\n선택 : ");
+				int choice = scan.nextInt();
 				
-				if(itemnum < 1 || itemnum > 3) {
-					System.out.println("없는 상품번호 입니다..");
+				if(choice < 1 || choice > 3) {
+					System.out.println("입력오류");
 					continue;
 				}
 				else {
-					for(int i = 0; i < 3; i++) {
-						if(i == (itemnum - 1)) {
-							jang[count][i] = (log + 1);
-						}
-						else {
-							jang[count][i] = 0;
-						}
-					}
+					jang[count][0] = log;
+					jang[count][1] = choice;
 					count++;
-					continue;
 				}
 				
-			
 			}
 			
 			//장바구니
@@ -136,82 +124,94 @@ public class FileEx08 {
 				System.out.println(ids[log] + "의 장바구니");
 				
 				for(int i = 0; i < count; i++) {
-					for(int j = 0; j < ids.length; j++) {
-						if(jang[i][j] == (log + 1)) {
-							System.out.print(opt + ". ");
-							if(j == 0) {
-								System.out.println("사과");
-							}
-							else if(j == 1) {
-								System.out.println("바나나");
-							}
-							else if(j == 2) {
-								System.out.println("딸기");
-							}
-							opt++;
+					if(jang[i][0] == log) {
+						System.out.print(opt + ". ");
+						if(jang[i][1] == 1) {
+							System.out.println("사과");
 						}
-						else {
-							continue;
+						else if(jang[i][1] == 2) {
+							System.out.println("바나나");
 						}
+						else if(jang[i][1] == 3) {
+							System.out.println("딸기");
+						}
+						opt++;
+					}
+					else {
+						continue;
 					}
 				}
 			}
 			
 			//저장
 			else if (sel == 5) {
+//				jang[count][0] = log;
+//				jang[count][1] = choice;
+				
 				FileWriter fw = null;
 				
+				String data1 = "qwer : ";
+				String data2 = "javaking : ";
+				String data3 = "abcd : ";
 				String data = "";
 				
-				for(int i = 0; i < 3; i++) {
-					for(int j = 0; j < count; j++) {
-						
-						if(jang[j][i] == 0) {
-							continue;
+				for(int i = 0; i < jang.length; i++) {
+					if(jang[i][0] == 0) {
+						if(jang[i][1] == 1) {
+							data1 += "사과/";
 						}
-						
-						if(jang[j][i] == 1) {
-							data += "qwer : ";
-							if( == 1 ) {
-								data += "사과\n";
-							}
-							else if(jang[j][i] == 1) {
-								data += "사과 : ";
-							}
+						else if(jang[i][1] == 2) {
+							data1 += "바나나/";
 						}
-						else if(i == 1) {
-							data += "javaking : ";
-						}
-						else if(i == 2) {
-							data += "abcd : ";
+						else if(jang[i][1] == 3) {
+							data1 += "딸기/";
 						}
 					}
-					data += "\n";
+					else if(jang[i][0] == 1) {
+						if(jang[i][1] == 1) {
+							data2 += "사과/";
+						}
+						else if(jang[i][1] == 2) {
+							data2 += "바나나/";
+						}
+						else if(jang[i][1] == 3) {
+							data2 += "딸기/";
+						}
+					}
+					else if(jang[i][0] == 2) {
+						if(jang[i][1] == 1) {
+							data3 += "사과/";
+						}
+						else if(jang[i][1] == 2) {
+							data3 += "바나나/";
+						}
+						else if(jang[i][1] == 3) {
+							data3 += "딸기/";
+						}
+					}
+					
 				}
+				data1 = data1.substring(0, data1.length() - 1);
+				data2 = data2.substring(0, data2.length() - 1);
+				data3 = data3.substring(0, data3.length() - 1);
 				
-				data = data.substring(0, data.length() - 1);
+				data += data1 + "\n" + data2 + "\n" + data3;
 				
 				try {
 					fw = new FileWriter(fileName);
 					fw.write(data);
 					fw.close();
-					
 				}
 				catch(Exception e) {
 					e.printStackTrace();
 				}
+				
 				
 			}
 			
 			//로드
 			else if (sel == 6) {
 				
-				for(int i = 0; i < 3; i++) {
-					for(int j = 0; j < count; j++) {
-						System.out.print(jang[j][i]);
-					}
-					System.out.println();
-				}
 				File file = new File(fileName);
 				FileReader fr = null;
 				BufferedReader br = null;
