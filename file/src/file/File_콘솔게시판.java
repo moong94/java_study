@@ -44,6 +44,7 @@ public class File_콘솔게시판 {
 					
 					count = Integer.parseInt(br.readLine());
 					
+					
 					String data = "";
 					for(int i = 0 ; i < count; i++) {
 						data += br.readLine();
@@ -73,8 +74,24 @@ public class File_콘솔게시판 {
 			
 			while(true) {
 				
-				System.out.println("게시판 (" + count + "개");
-				System.out.println("현제 페이지 : " + curPageNum);
+				pageCount = ((count - 1) / pageSize) + 1;
+				
+				System.out.println("게시판 (" + count + ")개");
+				System.out.println("현재 페이지 : " + curPageNum + " Page / " + pageCount + " Pages");
+				//시작번호
+				startRow = ((curPageNum - 1) * pageSize) + 1;
+				
+				
+				//끝번호
+				endRow = count;
+				
+				for(int i = 0; i < pageSize; i++) {
+					if((startRow + i - 1) >= count) {
+						continue;
+					}
+					System.out.println((i + 1) + ") " + board[startRow + i - 1][0]);
+				}
+				
 				
 				System.out.println("[1]이전");
 				System.out.println("[2]이후");
@@ -86,34 +103,61 @@ public class File_콘솔게시판 {
 				
 				//이전
 				if(choice == 1) {
-					
+					if(curPageNum == 1) {
+						System.out.println("첫번 째 페이지 입니다.");
+						continue;
+					}
+					else {
+						curPageNum--;
+					}
 				}
 				
 				//이후
 				else if(choice == 2) {
-					
+					if(curPageNum == pageCount) {
+						System.out.println("마지막 페이지 입니다.");
+						continue;
+					}
+					else {
+						curPageNum++;
+					}
 				}
 				
 				//추가하기
 				else if(choice == 3) {
+					
 					System.out.print("게시글 제목 입력 : ");
 					String sub = scan.next();
 					
 					System.out.print("게시글 내용 입력 : ");
-					String data = scan.next();
+					String text = scan.next();
+					
+					String tmp[][] = board;
+					
+					board = new String[count+1][2];
+					
+					for(int i = 0; i < count; i++) {
+						board[i][0] = tmp[i][0];
+						board[i][1] = tmp[i][1];
+					}
 					
 					board[count][0] = sub;
-					board[count][1] = data;
+					board[count][1] = text;
 					count++;
+					
+					String data = "";
+					data += count + "\n";
+					
+					for(int i = 0; i < count; i++) {
+						data += board[i][0] + "/" + board[i][1] + "\n";
+					}
+					
+					data = data.substring(0,data.length() - 1);
 					
 					try {
 						fw = new FileWriter(file);
 						
-						fw.write(count);
-						for(int i = 0; i < count; i++) {
-							fw.write(sub + "/" + data);
-							}
-						
+						fw.write(data);						
 						fw.close();
 					}
 					catch (Exception e) {
@@ -126,10 +170,61 @@ public class File_콘솔게시판 {
 				//삭제하기
 				else if(choice == 4) {
 					
+					
+					System.out.print("삭제할 번호 입력 : ");
+					int del = scan.nextInt();
+					
+					
+					if(del < 1 || del > count) {
+						System.out.println("번호 선택 오류");
+						continue;
+					}
+					
+					String tmp[][] = board;
+					
+					board = new String[count - 1][2];
+					
+					int j = 0;
+					
+					for(int i = 0; i < tmp.length; i++) {
+						if(i == (del - 1)) {
+							continue;
+						}
+						board[j][0] = tmp[i][0];
+						board[j][1] = tmp[i][1];
+						j++;
+					}
+					count--;
+					
+					String data = "";
+					data += count + "\n";
+					
+					for(int i = 0; i < board.length; i++) {
+						data += board[i][0] + "/" + board[i][1] + "\n";
+					}
+					
+					data = data.substring(0, data.length() - 1);
+					
+					try {
+						fw = new FileWriter(fileName);
+						fw.write(data);
+						fw.close();
+					}
+					catch(Exception e) {
+						e.printStackTrace();
+					}
+					
 				}
 				
 				//내용확인
-				else if(choice == 5) {}
+				else if(choice == 5) {
+					System.out.print("확인할 내용 번호 입력 : ");
+					int sel = scan.nextInt();
+					
+					System.out.println(sel + ") " + board[sel - 1][0]);
+					System.out.println("내용 : "+ board[sel - 1][1]);
+					
+				}
 			}
 
 	}
