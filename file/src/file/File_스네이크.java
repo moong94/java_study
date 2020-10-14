@@ -54,7 +54,6 @@ public class File_스네이크 {
 			}
 			System.out.println(snakesize);
 
-//			System.out.println(y[snakesize - 1] + " " + x[snakesize - 1]);
 			x = new int[snakesize];
 			y = new int[snakesize];
 			snake = new int[snakesize];
@@ -65,14 +64,13 @@ public class File_스네이크 {
 				snake[i] = map[y[i]][x[i]];
 			}
 			
-//			if(itemcount == 0) {
-//				x[snakesize - 1] = tmp_x[snakesize - 1];
-//				y[snakesize - 1] = tmp_y[snakesize - 1];
-//			}
-			
 			
 			
 			while(itemcount == 0) {
+				if(snakesize == 8) {
+					itemcount++;
+					continue;
+				}
 				int ran_x = ran.nextInt(size);
 				int ran_y = ran.nextInt(size);
 				
@@ -151,26 +149,12 @@ public class File_스네이크 {
 					
 				}
 			}
+			else {
+				System.out.println("입력오류");
+				break;
+			}
 			
-//			if(map[y[0]][x[0]] == item) {
-//				snakesize++;
-//				snake = new int[snakesize];
-//				
-//				tmp_x = new int[snakesize];
-//				tmp_y = new int[snakesize];
-//				
-//				for(int i = 1; i < snakesize; i++) {
-//					x[i] = tmp_x[i - 1];
-//					y[i] = tmp_y[i - 1];
-//					map[y[i]][x[i]] = i + 1;
-//					snake[i] = map[y[i]][x[i]];
-//				}
-//
-//				map[y[snakesize - 1]][x[snakesize -1]] = snakesize;
-//				
-//				
-//			}
-					
+			
 			for(int i = 1; i < snakesize; i++) {
 				x[i] = tmp_x[i - 1];
 				y[i] = tmp_y[i - 1];
@@ -179,14 +163,45 @@ public class File_스네이크 {
 			}
 			
 			if(map[y[0]][x[0]] == item) {
+				int tmp_yy[] = new int[snakesize + 1];
+				int tmp_xx[] = new int[snakesize + 1];
+				
+				int x_init = x[0];
+				int y_init = y[0];
+				
+				
+				for(int i = 0; i < snakesize; i++) {
+					tmp_xx[i] = x[i];
+					tmp_yy[i] = y[i];
+				}
+				
 				map[tmp_y[snakesize - 1]][tmp_x[snakesize - 1]] = snakesize + 1;
+				tmp_xx[snakesize] = tmp_x[snakesize - 1];
+				tmp_yy[snakesize] = tmp_y[snakesize - 1];
+				
+				x = new int[snakesize + 1];
+				y = new int[snakesize + 1];
+				snake = new int[snakesize + 1];
+				
+				for(int i = 1; i < snakesize + 1; i++) {
+					x[i] = tmp_xx[i];
+					y[i] = tmp_yy[i];
+					map[y[i]][x[i]] = i + 1;
+					snake[i] = map[y[i]][x[i]];
+				}
+				x[0] = x_init;
+				y[0] = y_init;
+				
+				map[y[0]][x[0]] = 1;
+				snake[0] = 1;
+				
 				snakesize++;
 				itemcount--;
-				
+				continue;
 			}
 			
 			
-			else if(map[y[0]][x[0]] != 0) {
+			else if(map[y[0]][x[0]] != 0 && map[y[0]][x[0]] != item) {
 				System.out.println("몸에 닿아 죽었습니다.");
 				break;
 			}
