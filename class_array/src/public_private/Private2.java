@@ -30,6 +30,7 @@ public class Private2 {
 		PrivateProduct test = new PrivateProduct("20200920" , "김치" , 1000);
 		// private 으로 막혔기때문에 한번등록하면 값변조가 불가하다. 오로지 가져오는것만 가능하다.
 		System.out.println(test.getData());
+		
 		//불가능
 //		test.time = "asdf";
 //		public이 없으면 가능

@@ -32,7 +32,7 @@ public class Wrapper_Class {
 		Float f = new Float(10.1);
 		System.out.println(f);
 		
-		double d = 10.1;
+		double d = 10.11;
 		Double dd = new Double(10.11);
 		System.out.println(dd);
 		
