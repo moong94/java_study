@@ -1,7 +1,6 @@
 package arraylist;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 class Member{
 	private int custno;				// 회원번호
@@ -21,6 +20,14 @@ class Member{
 		this.grade = grade;
 		this.city = city;
 	}
+	int return_custno() {
+		return custno;
+	}
+	
+	String return_custname() {
+		return custname;
+	}
+	
 }
 class Money{
 	 int custno;				// 회원번호
@@ -30,9 +37,7 @@ class Money{
 	 int price;				// 가격(매출)
 	 String pcode;			// 상품코드
 	 String sdate;			// 판매일자
-	 public Money() {
-		 
-	 }
+	 public Money() {}
 		public Money(int custno, int saleno, int pcost, int amount, int price, String pcode, String sdate) {
 			this.custno = custno;
 			this.saleno = saleno;
@@ -42,10 +47,16 @@ class Money{
 			this.pcode = pcode;
 			this.sdate = sdate;
 		}
+		
+	int return_price() {
+		return price;
+	}
 }
-class ManagerEX{
+class ManagerEx{
 	ArrayList<Member> memberList = new ArrayList<Member>();
 	ArrayList<Money> moneyList = new ArrayList<Money>(); 	
+	ArrayList<NewList> newlist = new ArrayList<NewList>();
+	
 	void init() {
 		memberList.add(new Member(100001, "김행복", "010-1111-2222", "SK", "20151202", "A", "01"));
 		memberList.add(new Member(100002, "이축복", "010-1111-3333", "SK", "20151206", "B", "01"));
@@ -65,49 +76,79 @@ class ManagerEX{
 		moneyList.add(new Money(100004, 20160009, 600, 1, 600, "A006", "20160104"));
 		moneyList.add(new Money(100004, 20160010, 3000, 1, 3000, "A007", "20160106"));
 	}
-}
-
-class Sorting{
-	int custno;
-	int custname;
-	int pricesum;
-	ManagerEX mg = new ManagerEX();
 	
-	
-	void sum() {
-		ArrayList<Sorting> sort = new ArrayList<>();
-		Member mem = new Member();
+	void collect_no_name() {
 		
-		for(int i = 0; i < mg.memberList.size(); i++) {
-			for(int j = 0; j < mg.moneyList.size(); j++) {
-//				if(mg.moneyList.get(i).custno == mg.memberList.get(j)) {
-//					
-//				}
+		for(int i = 0; i < memberList.size(); i++) {
+			NewList a = new NewList(memberList.get(i).return_custno(), memberList.get(i).return_custname(), 0);
+			newlist.add(a);
+			for(int j = 0; j < moneyList.size(); j++) {
+				if(memberList.get(i).return_custno() == moneyList.get(j).custno) {
+					a.price += moneyList.get(j).price;
+				}
+							
 			}
 		}
-		
-	}
-	void sorting() {
-		
 	}
 	
-	void run() {
-		sum();
-		sorting();
-		
+	void sort() {
+		for(int i = 0; i < newlist.size(); i++) {
+			for(int j = 0; j < i; j++) {
+				if(newlist.get(i).price > newlist.get(j).price) {
+					//NewList tmp = newlist.get(i);
+					//newlist.get(i) = newlist.get(j);
+					//newlist.get(j) = tmp;
+					
+					NewList tmp = new NewList(newlist.get(i).custno, newlist.get(i).custname, newlist.get(i).price);
+					
+					newlist.get(i).custname = newlist.get(j).custname;
+					newlist.get(i).custno = newlist.get(j).custno;
+					newlist.get(i).price = newlist.get(j).price;
+					
+					newlist.get(j).custname = tmp.custname;
+					newlist.get(j).custno = tmp.custno;
+					newlist.get(j).price = tmp.price;
+					
+				}
+			}
+		}
+	}
+	
+	void print() {
+		for(int i = 0; i < newlist.size(); i++) {
+			if(newlist.get(i).price != 0) {
+			System.out.println(newlist.get(i).custno + "\t" + newlist.get(i).custname + "\t" + newlist.get(i).price);
+			}
+		}
+	}
+	
+	void run(){
+		collect_no_name();
+		sort();
+		print();
+	
 	}
 }
+	
+class NewList{
+	int custno;
+	String custname;
+	int price;
+	
+	public NewList(int custno, String custname, int price){
+		this.custno = custno;
+		this.custname = custname;
+		this.price = price;
+	}
+	
+}
+
 
 public class ArrayList_정보처리산업기사 {
 
 	public static void main(String[] args) {
-		ManagerEX mg = new ManagerEX();
+		ManagerEx mg = new ManagerEx();
 		mg.init();
-		Sorting st = new Sorting();
-		
-		System.out.println(mg.memberList.size());
-		
-		System.out.println(mg.memberList.get(0));
 		/*
 		   [문제] 아 래와 같이 출력  매출(price) 의 합계 + 내림차순 
 		  
@@ -120,6 +161,8 @@ public class ArrayList_정보처리산업기사 {
 			100002	이축복		2500
 			--------------------------------
 		 */
+		mg.run();
+		
 		
 	}
 
