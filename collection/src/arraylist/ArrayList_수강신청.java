@@ -5,27 +5,18 @@ import java.util.Random;
 import java.util.Vector;
 
 class Subject {
-	String subject_name;
-	int log;
-	
+	String name;
+	int score;
 }
 
 class SubjectManager {
-	Vector<Subject> subjectList;
-	
-	int count = 0;
-	
-	void init() {
-		subjectList = new Vector<>();
-		
-		
-	}
+	Vector<Subject> subjectList = new Vector<Subject>();
 }
 
 class StudentEx {
 	String name;
 	int number;
-	SubjectManager sm;
+	SubjectManager sm = new SubjectManager();
 
 	void studentPrint() {
 		System.out.println(number + " " + name);
@@ -36,7 +27,6 @@ class StudentExManager {
 	Vector<StudentEx> studentList;
 
 	int log = -1;
-	
 	String setRandomName() {
 		Random ran = new Random();
 		String name = "";
@@ -55,7 +45,7 @@ class StudentExManager {
 	}
 
 	void init() {
-		studentList = new Vector<>();
+		studentList = new Vector<StudentEx>();
 		int num = 1001;
 		for (int i = 0; i < 5; i++) {
 			StudentEx st = new StudentEx();
@@ -66,9 +56,18 @@ class StudentExManager {
 		
 	}
 
-	void printAllStudentEx() {
+	void printAllStudent() {
 		for (int i = 0; i < studentList.size(); i++) {
 			studentList.get(i).studentPrint();
+		}
+	}
+	
+	void user() {
+		if(this.log == -1) {
+			System.out.println("....");
+		}
+		else {
+			System.out.println(studentList.get(log).name + " 로그인 중....");
 		}
 	}
 	
@@ -77,190 +76,171 @@ class StudentExManager {
 		
 		System.out.println("1. 로그인");
 		System.out.println("2. 로그아웃");
-		System.out.println("3. 수강과목 추가");
-		System.out.println("4. 수강과목 삭제");
-		System.out.println("5. 전체 수강과목 출력");
-		System.out.println("6. 종료");
-		System.out.print("입력 : ");
+		System.out.println("3. 과목 수강");
+		System.out.println("4. 수강 철회");
+		System.out.println("5. 전체 수강내용 조회");
+		System.out.println("6. 종료.");
+		System.out.print("메뉴 입력 : ");
 		int select = scan.nextInt();
 		
 		return select;
 	}
-	
-	void login_inform() {
-		if(this.log == -1) {
-			System.out.println("로그아웃 상태....");
-		}
-		else {
-			System.out.println(studentList.get(log).name + " 로그인 중....");
-		}
-	}
-	
 	void login() {
 		Scanner scan = new Scanner(System.in);
 		
 		if(this.log != -1) {
-			System.out.println("로그 아웃 후 이용가능");
+			System.out.println("로그아웃 후 이용 가능.");
 			return;
 		}
-		System.out.print("로그인 할 이름 입력 : ");
+		
+		System.out.print("이름 입력 : ");
 		String input_name = scan.next();
 		
 		for(int i = 0; i < studentList.size(); i++) {
-			if(input_name.equals(studentList.get(i).name)) {
-				System.out.println("로그인 되었습니다.");
+			if(studentList.get(i).name.equals(input_name)) {
 				this.log = i;
 			}
 		}
+		if(log == -1) {
+			System.out.println("입력 오류");
+		}
+		else {
+			System.out.println("로그인 되었습니다.");
+		}
 	}
+	
 	
 	void logout() {
-		if(this.log == -1) {
+		if(log == -1) {
 			System.out.println("로그인 후 이용가능");
 			return;
 		}
-		else {
-			System.out.println("로그아웃 되었습니다.");
-			this.log = -1;
-		}
+		
+		log = -1;
+		System.out.println("로그아웃 되었습니다.");
 	}
+	
 	void add_subject() {
-		if(this.log == -1) {
+		Scanner scan = new Scanner(System.in);
+		Random ran = new Random();
+		
+		if(log == -1) {
 			System.out.println("로그인 후 이용가능");
 			return;
 		}
-		else {
-			SubjectManager sb = new SubjectManager();
-			Scanner scan = new Scanner(System.in);
-
-			String subject_name = "";
+		System.out.println("1. JAVA");
+		System.out.println("2. C");
+		System.out.println("3. C++");
+		System.out.println("4. PYTHON");
+		System.out.print("추가할 과목 입력 : ");
+		int input = scan.nextInt();
+		
+		Subject sb = new Subject();
+		
+		if(input == 1) {
+			sb.name = "JAVA";
+			sb.score = ran.nextInt(100) + 1;
 			
-			System.out.println("1. JAVA");
-			System.out.println("2. C");
-			System.out.println("3. C++");
-			System.out.println("4. PYTHON");
-			System.out.print("과목 선택 : ");
-			int select_subject = scan.nextInt();
-			if(select_subject == 1) {
-				subject_name += "JAVA";
-			}
-			else if(select_subject == 2) {
-				subject_name += "C";
-			}
-			else if(select_subject == 3) {
-				subject_name += "C++";
-			}
-			else if(select_subject == 4) {
-				subject_name += "PYTHON";
-			}
+			studentList.get(log).sm.subjectList.add(sb);
+		}
+		else if(input == 2) {
+			sb.name = "C";
+			sb.score = ran.nextInt(100) + 1;
 			
-			else {
-				System.out.println("입력오류");
-				return;
-			}
+			studentList.get(log).sm.subjectList.add(sb);
+		}
+		else if(input == 3) {
+			sb.name = "C++";
+			sb.score = ran.nextInt(100) + 1;
 			
-			Subject a = new Subject();
+			studentList.get(log).sm.subjectList.add(sb);
+		}
+		else if(input == 4) {
+			sb.name = "PYTHON";
+			sb.score = ran.nextInt(100) + 1;
 			
-			
-			sb.subjectList.get(sb.count).subject_name = subject_name;
-			sb.subjectList.get(sb.count).log = log;
-			sb.count++;
+			studentList.get(log).sm.subjectList.add(sb);
 		}
 	}
 	
-	void remove_subject() {
-		SubjectManager sb = new SubjectManager();
+	void del_subject() {
 		Scanner scan = new Scanner(System.in);
 		
-		if(this.log == -1) {
+		if(log == -1) {
 			System.out.println("로그인 후 이용가능");
 			return;
 		}
-		int number = 1;
-		int logidx[] = new int[1];
-		for(int i = 0; i < sb.subjectList.size(); i++) {
-			if(sb.subjectList.get(i).log == this.log) {
-				System.out.println(number + ". " + sb.subjectList.get(i).subject_name);
-				int tmp[] = logidx;
-				logidx = new int[number];
-				for (int j = 0; j < logidx.length; j++) {
-					logidx[j] = tmp[j];
-				}
-				logidx[number - 1] = i;
-				number++;
-			}
-		}
+		int count = studentList.get(log).sm.subjectList.size();
 		
-		if(number == 1) {
-			System.out.println("철회할 과목이 없습니다.");
-			return;
+		for(int i = 0; i < count; i++) {
+			System.out.println((i + 1) + ". " + studentList.get(log).sm.subjectList.get(i).name);
 		}
-		System.out.print("철회할 과목 입력 : ");
-		int input_number = scan.nextInt();
+		System.out.print("삭제 과목 입력 : ");
+		int input = scan.nextInt();
 		
-		if(input_number < 1 || input_number > number - 1) {
-			System.out.println("입력오류");
-			return;
+		if(input < 1 || input > count) {
+			System.out.println("입력 오류");
 		}
 		else {
-			for(int i = 0; i < sb.subjectList.size(); i++) {
-				sb.subjectList.remove(logidx[input_number - 1]);
-			}
+			studentList.get(log).sm.subjectList.remove(input - 1);
 		}
-		
 	}
 	
-	void confirm_subject() {
-		SubjectManager sb = new SubjectManager();
-		if(sb.subjectList.size() == 0) {
-			return;
+	void show_all() {
+		for(int i = 0; i < studentList.size(); i++) {
+			studentList.get(i).studentPrint();
+			for(int j = 0; j < studentList.get(i).sm.subjectList.size(); j++) {
+				System.out.println((j + 1) + ". " + studentList.get(i).sm.subjectList.get(j).name + " : " + studentList.get(i).sm.subjectList.get(j).score + "점");
+			}
 		}
-		for(int i = 0; i < sb.subjectList.size(); i++) {
-			System.out.println(sb.subjectList.get(i).subject_name + "\t" + studentList.get(sb.subjectList.get(i).log) + " 수강중");
-		}
-		
 	}
+	
 	
 	
 	void run() {
-		
 		while(true) {
-			login_inform();
+			user();
 			
 			int sel = select();
+			
 			if(sel == 1) {
 				login();
 			}
 			else if(sel == 2) {
 				logout();
+				
 			}
 			else if(sel == 3) {
 				add_subject();
 			}
 			else if(sel == 4) {
-				remove_subject();
+				del_subject();
 			}
 			else if(sel == 5) {
-				confirm_subject();
+				show_all();
 			}
 			else if(sel == 6) {
 				System.out.println("종료");
 				break;
 			}
+			
 		}
+		
 	}
 }
-
+	
 public class ArrayList_수강신청 {
 
 	public static void main(String[] args) {
 		StudentExManager sm = new StudentExManager();
+		
 		sm.init();
-		sm.printAllStudentEx();
+		sm.printAllStudent();
 		// 기능추가
         // 1.로그인 (그냥이름으로 로그인)
         // 2.수강과목 추가 삭제 전체출력등 기능추가 (자바 ,파이썬 , 씨언어 .. 등등)
 		sm.run();
+		
 	}
 
 }
