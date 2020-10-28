@@ -59,6 +59,11 @@ class ItemManager{
 	}
 	
 	void deleteJang(User u) {
+		if(jangList.size() == 0) {
+			System.out.println("[메세지] 장바구니가 비었습니다.");
+			return;
+		}
+		
 		printJang(u);
 		
 		System.out.print("[아이템 삭제] 삭제할 메뉴를 입력하세요 : ");
@@ -92,6 +97,7 @@ class ItemManager{
 	void printJang(User u) {
 		for(int i = 0; i < jangList.size(); i++) {
 			if(u.id.equals(jangList.get(i).userId)) {
+				System.out.print("[" + i + "]");
 				jangList.get(i).print();
 			}
 		}
@@ -114,7 +120,7 @@ class ItemManager{
 		int n = 0;
 		for(int i = 0; i < itemList.size(); i++) {
 			if(category.get(caID).equals(itemList.get(i).category)) {
-				System.out.println("[" + n +"]");
+				System.out.print("[" + n +"]");
 				itemList.get(i).print();
 				n++;
 			}
@@ -135,10 +141,28 @@ class ItemManager{
 		itemList.add(temp);
 	}
 	
+	void deleteItem() {
+		printItemList();
+		System.out.print("[아이템삭제] 삭제할 아이템 입력 : ");
+		int sel = scan.nextInt();
+
+		System.out.println("[메세지]" + itemList.get(sel).name + "삭제.");
+		itemList.remove(sel);
+	}
+	
+	
 	void addCategory() {
 		System.out.print("[카테고리추가] 카테고리 이름을 입력하세요 : ");
 		String name = scan.next();
 		category.add(name);
+	}
+	
+	void deleteCategory() {
+		printCategory();
+		System.out.print("[카테고리삭제] 삭제할 카테고리를 입력하세요 : ");
+		int sel = scan.nextInt();
+		
+		category.remove(sel);
 	}
 	
 	void addCart(String usID, int caID, int itemID) {
@@ -156,4 +180,5 @@ class ItemManager{
 		}
 		jangList.add(temp);
 	}
+	
 }

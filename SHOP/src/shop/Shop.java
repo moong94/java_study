@@ -10,6 +10,12 @@ public class Shop {
 	void mainMenu() {
 		boolean run = true;
 		while(run) {
+			if(um.userLog == -1) {
+				System.out.println("....");
+			}
+			else {
+				System.out.println(um.userList.get(um.userLog).id + "님, 로그인 중....");
+			}
 			System.out.println("[1.가입] [2.탈퇴] [3.로그인] [4.로그아웃]");
 			System.out.println("[100.관리자] [0.종료]");
 			
@@ -30,6 +36,9 @@ public class Shop {
 			}
 			else if(sel == 100) {
 				managerMenu();
+			}
+			else if(sel == 0) {
+				break;
 			}
 		}
 	}
@@ -63,8 +72,9 @@ public class Shop {
 				break;
 			}
 			else {
-				System.out.print("[아이템] 번호를 입력하세요 : ");
 				im.printItemList(caID);
+				System.out.print("[아이템] 번호를 입력하세요 : ");
+				
 				int itemID = scan.nextInt();
 				im.addCart(um.userList.get(um.userLog).id, caID, itemID);
 			}
@@ -157,7 +167,66 @@ public class Shop {
 		}
 	}
 	
-//	void categoryMenu() {
-//		
-//	}
+	void categoryMenu() {
+		
+		boolean run = true;
+		while(run) {
+			
+			System.out.println("[1.전체 카테고리] [2.카테고리 추가] [3.카테고리 삭제] [0.뒤로가기]");
+			int sel = scan.nextInt();
+			
+			if(sel == 1) {
+				im.printCategory();
+			}
+			else if(sel == 2) {
+				im.addCategory();
+			}
+			else if(sel == 3) {
+				im.deleteCategory();
+			}
+			else if(sel == 0) {
+				run = false;
+			}
+		}
+	}
+	
+	void jangMenu() {
+		
+		um.printUser();
+		System.out.print("장바구니 관리할 유저 입력 : ");
+		int sel_user = scan.nextInt();
+		
+		boolean run = true;
+		while(run) {
+			System.out.println("[1.전체 장바구니 목록] [2.아이템 추가] [3.아이템 삭제] [0. 뒤로가기]");
+			int sel = scan.nextInt();
+			if(sel == 1) {
+				im.printJang(um.userList.get(sel_user));
+				
+			}
+			else if(sel == 2) {
+
+				im.printCategory();
+				System.out.print("[카테고리] 번호를 입력하세요. [종료 : -1] : ");
+				int caID = scan.nextInt();
+				if(caID == -1) {
+					break;
+				}
+				else {
+					im.printItemList(caID);
+					System.out.print("[아이템] 번호를 입력하세요 : ");
+					
+					int itemID = scan.nextInt();
+					im.addCart(um.userList.get(sel_user).id, caID, itemID);
+				}
+			}
+			else if(sel == 3) {
+				im.deleteJang(um.userList.get(sel_user));
+			}
+			else if(sel == 0) {
+				run = false;
+			}
+		}
+		
+	}
 }

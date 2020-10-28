@@ -97,8 +97,27 @@ class UserManager {
 	
 	void printUser() {
 		for(int i = 0; i < userList.size(); i++) {
-			System.out.println("[" + i + "]");
+			System.out.print("[" + i + "]");
 			userList.get(i).print();
 		}
+	}
+	
+	void addUser() {
+		System.out.print("[유저추가] 유저명 입력 : ");
+		String name = scan.next();
+		
+		User temp = new User(name, 0);
+		userList.add(temp);
+		
+		System.out.println(name + "회원 추가.");
+	}
+	void deleteUser() {
+		printUser();
+		System.out.print("[유저삭제] 삭제할 유저 입력 : ");
+		int sel = scan.nextInt();
+		
+		System.out.print("[메세지]" + userList.get(sel).id + "유저 삭제.");
+		userList.remove(sel);
+		
 	}
 }
