@@ -166,9 +166,88 @@ public class Guild {
 		}
 	}
 	
-//	void partySort() {
-//		System.out.println("");
-//	}
+	void partySort() {
+		System.out.println("============길드정렬===========");
+		System.out.println("[1.이름별 정렬] [2.레벨 별 정렬] [3.체력별 정렬]");
+		System.out.println("[4.공격력별 정렬] [5.방어력별 정렬]");
+		System.out.print("정렬방식을 선택하세요 : ");
+		int sel = MainGame.scan.nextInt();
+		
+		if(sel == 1) {
+			for(int i = 0; i < guildList.size(); i++) {
+				for(int j = 0; j < i; j++) {
+					if(guildList.get(i).name.compareTo(guildList.get(j).name) < 0) {
+						Unit temp = guildList.get(i);
+						Unit temp2 = guildList.get(j);
+						guildList.remove(i);
+						guildList.add(i, temp2);
+						guildList.remove(j);
+						guildList.add(j, temp);
+						
+					}
+				}
+			}
+			
+		}
+		else if(sel == 2) {
+			for(int i = 0; i < guildList.size(); i++) {
+				for(int j = 0; j < i; j++) {
+					if(guildList.get(i).level > guildList.get(j).level) {
+						Unit temp = guildList.get(i);
+						Unit temp2 = guildList.get(j);
+						guildList.remove(i);
+						guildList.add(i, temp2);
+						guildList.remove(j);
+						guildList.add(j, temp);
+					}
+				}
+			}
+		}
+		else if(sel == 3) {
+			for(int i = 0; i < guildList.size(); i++) {
+				for(int j = 0; j < i; j++) {
+					if(guildList.get(i).maxHp > guildList.get(j).maxHp) {
+						Unit temp = guildList.get(i);
+						Unit temp2 = guildList.get(j);
+						guildList.remove(i);
+						guildList.add(i, temp2);
+						guildList.remove(j);
+						guildList.add(j, temp);
+					}
+				}
+			}
+		}
+		else if(sel == 4) {
+			for(int i = 0; i < guildList.size(); i++) {
+				for(int j = 0; j < i; j++) {
+					if(guildList.get(i).att > guildList.get(j).att) {
+						Unit temp = guildList.get(i);
+						Unit temp2 = guildList.get(j);
+						guildList.remove(i);
+						guildList.add(i, temp2);
+						guildList.remove(j);
+						guildList.add(j, temp);
+					}
+				}
+			}
+		}
+		else if(sel == 5) {
+			for(int i = 0; i < guildList.size(); i++) {
+				for(int j = 0; j < i; j++) {
+					if(guildList.get(i).def > guildList.get(j).def) {
+						Unit temp = guildList.get(i);
+						Unit temp2 = guildList.get(j);
+						guildList.remove(i);
+						guildList.add(i, temp2);
+						guildList.remove(j);
+						guildList.add(j, temp);
+					}
+				}
+			}
+		}
+		printAllUnitStatus();
+		
+	}
 	
 	public void guildMenu() {
 		while(true) {
@@ -191,7 +270,7 @@ public class Guild {
 				partyChange();
 			}
 			else if(sel == 5) {
-//				partySort();
+				partySort();
 			}
 			else if(sel == 0) {
 				break;
