@@ -77,6 +77,8 @@ class SCV extends GroundUnit implements Repairble {
 //메소드의 인수로 클래스 또는 인터페이스의 객체를 사용하면 인수로 사용되는 클래스를 상속받은 모든 클래스의 객체와
 //인터페이스를 구현받은 모든 클래스의 객체를 인수로 받을 수 있다.
 	public void repair(Repairble repairble) {
+		
+		
 //	수리할 객체를 넘겨받은 Repairble 인터페이스에는 아무런 내용이 없으므로 인수로 넘겨받은 객체를 구현한 내용이
 //	들어있는 클래스로 형변환 시킨 후 사용해야 한다.
 		Unit unit = (Unit) repairble;
@@ -106,14 +108,31 @@ class DropShip extends AirUnit implements Repairble {
 	}
 }
 
+
+class A{
+	void test() {
+		System.out.println("aa");
+	}
+}
+class B extends A{
+	void test() {
+		System.out.println("bb");
+	}
+}
+
 public class Interface2 {
 
 	public static void main(String[] args) {
+		
+		B b = new B();
+		b.test();
+		
 		Tank tank = new Tank();
 		Marine marine = new Marine();
 		SCV scv = new SCV();
 		DropShip dropShip = new DropShip();
-		
+	//	System.out.println(scv.toString());
+	//	System.out.println(scv);
 		scv.repair(dropShip);
 
 	}

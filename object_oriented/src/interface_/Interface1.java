@@ -17,6 +17,7 @@ interface CC{
 	
 	public void test2();
 }
+
 class DD implements CC , EE {
 	public void test1() {
 		System.out.println("a");

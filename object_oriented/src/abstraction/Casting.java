@@ -9,7 +9,7 @@ class Base {
 
 class Sub extends Base {
 	int age;
-	@Override
+	@Override	
 	public void say() {
 		System.out.println(name + "님은 " + age + "살 입니다.");
 	}
