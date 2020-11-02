@@ -7,18 +7,18 @@ public class StudentDelete {
 		studentDAO = stDAO;
 	}
 
-	public Student delete(String id) {
+	public void delete(Student student) {
+		String id = student.getId();
 		if(checkId(id)) {
-			return studentDAO.delete(id);
+			studentDAO.delete(student);
 		}else {
-			System.out.println("정보가 없습니다.");
+			System.out.println("없는 계정 입니다");
 		}
-		return null;
 	}
 	
 	public boolean checkId(String id){
 		Student student = studentDAO.select(id);
-		return student == null? true:false;
+		return student == null? false:true;
 
 	}
 	

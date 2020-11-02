@@ -11,8 +11,8 @@ public class StudentDAO {
 	public Student select(String id) {
 		return stDB.get(id);
 	}
-	public Student delete(Student st) {
-		this.stDB.remove(id);
+	public void delete(Student st) {
+		this.stDB.remove(st.getId());
 	}
 	
 	public Map<String , Student> getStudentDB(){

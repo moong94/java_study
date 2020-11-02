@@ -31,9 +31,14 @@ public class _MainController {
 				stInsert.insert(st);			
 			}
 			else if(sel == 2) {
+				System.out.println("번호를 입력하세요.");
+				int num = scan.nextInt();
 				System.out.println("아이디를 입력하세요.");
 				String id = scan.next();
-				Student st = stDelete.delete(id);
+				System.out.println("이름을 입력하세요.");
+				String name = scan.next();
+				Student st = new Student(num , id ,name);
+				stDelete.delete(st);
 			}
 			else if(sel == 3) {
 				System.out.println("아이디를 입력하세요.");
