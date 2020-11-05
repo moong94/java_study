@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
 class MyPanel extends JPanel implements ActionListener{
 	int size = 9;
 	JButton[][] board= new JButton[size][size];
