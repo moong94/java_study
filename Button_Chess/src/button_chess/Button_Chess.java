@@ -25,6 +25,9 @@ class My_Panel extends JPanel implements ActionListener{
 	final int P2_QUEEN = 25;
 	final int P2_KING = 26;
 	
+	int now_loc[] = new int[2];
+	int red_loc[][];
+	
 	int status = 1;
 	//1 : 첫 클릭; 2 : 다음 클릭
 	
@@ -51,22 +54,6 @@ class My_Panel extends JPanel implements ActionListener{
 	My_Panel(){
 		this.setLayout(null);
 		init();
-		play();
-		
-	}
-	
-	public void play() {
-//		while(king_check()) {
-			if(player_turn % 2 == 0) {
-				turn_box(1);
-			}
-			else if(player_turn % 2 == 1) {
-				turn_box(2);
-			}
-			
-			image_draw();
-			player_turn++;
-//		}
 	}
 	
 	public boolean king_check() {
@@ -118,7 +105,7 @@ class My_Panel extends JPanel implements ActionListener{
 		image_draw();
 		
 		turn_btn.setBounds(225,700,200,50);
-		turn_box(1);
+		turn_box(0);
 		add(turn_btn);
 		
 	}
@@ -181,78 +168,102 @@ class My_Panel extends JPanel implements ActionListener{
 				if(board[j][i] == P2_KING) {
 					map_btn[j][i].setIcon(p2_king_img);
 				}
-				
-			}
-		}
-	}
-	
-	//이동 경로에 적이 있으면 노란색
-	public void enemy_check(int turn) {
-		for(int i = 0; i < SIZE; i++) {
-			for(int j = 0; j < SIZE; j++) {
-				if(map_btn[j][i].getBackground() == Color.RED && (board[j][i] / 10 == turn)) {
-					map_btn[j][i].setBackground(Color.YELLOW);
+				if(board[j][i] == 0) {
+					map_btn[j][i].setIcon(null);
 				}
-			}
-		}
-	}
-	
-	public void map_location_check(int y, int x) {
-		for(int i = 0; i < SIZE; i++) {
-			for(int j = 0; j < SIZE; j++) {
-				
 			}
 		}
 	}
 	
 	public void movetoRED(int y, int x) {
-		for(int i = 0 ; i < SIZE; i++) {
-			for(int j = 0; j < SIZE; j++) {
-				if(map_btn[j][i].getBackground() == Color.RED) {
-					System.out.println("빨강");
+		if(map_btn[y][x].getBackground() == Color.RED) {
+			board[y][x] = board[now_loc[0]][now_loc[1]];
+			board[now_loc[0]][now_loc[1]] = 0;
+			System.out.println(now_loc[0] + "  " + now_loc[1]);
+			for(int i = 0; i < SIZE; i++) {
+				for(int j = 0; j < SIZE; j++) {
+					if((j + i) % 2 == 1) {
+						map_btn[j][i].setBackground(Color.WHITE);
+					}
+					else {
+						map_btn[j][i].setBackground(Color.GRAY);
+					}
 				}
 			}
 		}
-	}
-	
-	public void movetoYELLOW(int y, int x) {
-		
+			
 	}
 	
 	public void turn_box(int turn) {
-		if(turn == 1) {
+		if(turn == 0) {
 			turn_btn.setText("플레이어 1(흰색) 차례");
 		}
-		else if(turn == 2) {
+		else if(turn == 1) {
 			turn_btn.setText("플레이어 2(검정색) 차례");
 		}
 	}
 	
+	public boolean enemy_check() {
+		
+		return true;
+	}
+	
+	
 	public void p1_pawn_move(int y, int x) {
-		if(y == 6) {
+		now_loc[0] = y;
+		now_loc[1] = x;
+		
+		if(y == 6 && (board[y - 1][x] / 10) == 0) {
 			map_btn[y - 1][x].setBackground(Color.RED);
 			map_btn[y - 2][x].setBackground(Color.RED);
-		}
-		else if((board[y - 1][x - 1] / 10 == 2) || (board[y - 1][x + 1] / 10 == 2)){
-			enemy_check(1);
+			red_loc = new int[2][2];
+			red_loc[0][0] = y - 1;
+			red_loc[0][1] = x;
+			red_loc[1][0] = y - 2;
+			red_loc[1][1] = x;
 		}
 		else {
-			if(y != 0) {
+			if(y != 0 && (board[y - 1][x] / 10) == 0) {
 				map_btn[y - 1][x].setBackground(Color.RED);
+				red_loc = new int [1][2];
+				red_loc[0][0] = y - 1;
+				red_loc[0][1] = x;
 			}
 		}
-		enemy_check(1);
+		if(y > 0 && y < SIZE && x > 0 && x < SIZE && board[y - 1][x - 1] / 10 == 2) {
+			map_btn[y - 1][x - 1].setBackground(Color.RED);
+		}
+		if(y > 0 && y < SIZE && x > 0 && x < SIZE && board[y - 1][x + 1] / 10 == 2) {
+			map_btn[y - 1][x + 1].setBackground(Color.RED);
+		}
 	}
 	
 	public void p2_pawn_move(int y, int x) {
-		if(y == 1) {
+		now_loc[0] = y;
+		now_loc[1] = x;
+		
+		if(y == 1 && (board[y + 1][x] / 10) == 0) {
 			map_btn[y + 1][x].setBackground(Color.RED);
 			map_btn[y + 2][x].setBackground(Color.RED);
+			red_loc = new int[2][2];
+			red_loc[0][0] = y + 1;
+			red_loc[0][1] = x;
+			red_loc[1][0] = y + 2;
+			red_loc[1][1] = x;
 		}
 		else {
-			if(y != 0) {
-				map_btn[y - 1][x].setBackground(Color.RED);
+			if(y != 7 && (board[y + 1][x] / 10) == 0) {
+				map_btn[y + 1][x].setBackground(Color.RED);
+				red_loc = new int [1][2];
+				red_loc[0][0] = y + 1;
+				red_loc[0][1] = x;
 			}
+		}
+		if(y > 0 && y < SIZE && x > 0 && x < SIZE && (board[y + 1][x + 1] / 10 == 1)) {
+			map_btn[y + 1][x + 1].setBackground(Color.RED);
+		}
+		if(y > 0 && y < SIZE && x > 0 && x < SIZE && (board[y + 1][x - 1] / 10 == 1)) {
+			map_btn[y + 1][x - 1].setBackground(Color.RED);
 		}
 	}
 	
@@ -264,7 +275,72 @@ class My_Panel extends JPanel implements ActionListener{
 	}
 	
 	public void rook_move(int y, int x) {
+		now_loc[0] = y;
+		now_loc[1] = x;
 		
+		y = now_loc[0];
+		x = now_loc[1];
+		while(y < SIZE - 1) {
+			if(board[y + 1][x] / 10 == ((player_turn % 2) + 1)) {
+				break;
+			}
+			else if(board[y + 1][x] / 10 != ((player_turn % 2) + 1) && board[y + 1][x] != 0) {
+				map_btn[y + 1][x].setBackground(Color.RED);
+				break;
+			}
+			else {
+				map_btn[y + 1][x].setBackground(Color.RED);
+				y++;
+			}
+		}
+
+		y = now_loc[0];
+		x = now_loc[1];
+		while(y > 0) {
+			if(board[y - 1][x] / 10 == ((player_turn % 2) + 1)) {
+				break;
+			}
+			else if(board[y - 1][x] / 10 != ((player_turn % 2) + 1) && board[y - 1][x] != 0) {
+				map_btn[y - 1][x].setBackground(Color.RED);
+				break;
+			}
+			else {
+				map_btn[y - 1][x].setBackground(Color.RED);
+				y--;
+			}
+		}
+		
+		y = now_loc[0];
+		x = now_loc[1];
+		while(x < SIZE - 1) {
+			if(board[y][x + 1] / 10 == ((player_turn % 2) + 1)) {
+				break;
+			}
+			else if(board[y][x + 1] / 10 != ((player_turn % 2) + 1) && board[y][x + 1] != 0) {
+				map_btn[y][x + 1].setBackground(Color.RED);
+				break;
+			}
+			else {
+				map_btn[y][x + 1].setBackground(Color.RED);
+				x++;
+			}
+		}
+		
+		y = now_loc[0];
+		x = now_loc[1];
+		while(x > 0) {
+			if(board[y][x - 1] / 10 == ((player_turn % 2) + 1)) {
+				break;
+			}
+			else if(board[y][x - 1] / 10 != ((player_turn % 2) + 1) && board[y][x - 1] != 0) {
+				map_btn[y][x - 1].setBackground(Color.RED);
+				break;
+			}
+			else {
+				map_btn[y][x - 1].setBackground(Color.RED);
+				x--;
+			}
+		}
 	}
 	
 	public void knight_move(int y, int x) {
@@ -278,73 +354,115 @@ class My_Panel extends JPanel implements ActionListener{
 	public void queen_move(int y, int x) {
 		
 	}
+	
+	public void first_loc(int y, int x) {
+		now_loc[0] = y;
+		now_loc[1] = x;
+	}
+	
+	public void cancel(int y, int x) {
+		for(int i = 0; i < SIZE; i++) {
+			for(int j = 0; j < SIZE; j++) {
+				if((j + i) % 2 == 1) {
+					map_btn[j][i].setBackground(Color.WHITE);
+				}
+				else {
+					map_btn[j][i].setBackground(Color.GRAY);
+				}
+			}
+		}
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		//첫 클릭
-		for(int i = 0; i < SIZE; i++) {
-			for(int j = 0; j < SIZE; j++) {
-				if(e.getSource() == map_btn[j][i] && status == 1) {
-					status = 2;
-					if(board[j][i] / 10 == 1) {
-						if(board[j][i] == P1_PAWN) {
-							p1_pawn_move(j, i);
+		if(status == 1) {
+			status = 2;
+			System.out.println("1");
+			for(int i = 0; i < SIZE; i++) {
+				for(int j = 0; j < SIZE; j++) {
+					if(e.getSource() == map_btn[j][i]) {
+						first_loc(j, i);
+						if(board[j][i] == 0) {
+							status = 1;
+							return;
 						}
-						if(board[j][i] == P1_ROOK) {
-							rook_move(j, i);
+						else if((board[j][i] / 10) != (player_turn % 2) +  1) {
+							status = 1;
+							return;
 						}
-						if(board[j][i] == P1_BISHOP) {
-							bishop_move(j, i);
+						if(board[j][i] / 10 == 1 && player_turn % 2 == 0) {
+							map_btn[j][i].setBackground(Color.YELLOW);
+							if(board[j][i] == P1_PAWN) {
+								p1_pawn_move(j, i);
+							}
+							if(board[j][i] == P1_ROOK) {
+								rook_move(j, i);
+							}
+							if(board[j][i] == P1_BISHOP) {
+								bishop_move(j, i);
+							}
+							if(board[j][i] == P1_KNIGHT) {
+								knight_move(j, i);
+							}
+							if(board[j][i] == P1_KING) {
+								p1_king_move(j, i);
+							}
+							if(board[j][i] == P1_QUEEN) {
+								queen_move(j, i);
+							}
 						}
-						if(board[j][i] == P1_KNIGHT) {
-							knight_move(j, i);
-						}
-						if(board[j][i] == P1_KING) {
-							p1_king_move(j, i);
-						}
-						if(board[j][i] == P1_QUEEN) {
-							queen_move(j, i);
+						else if(board[j][i] / 10 == 2 && player_turn % 2 == 1) {
+							map_btn[j][i].setBackground(Color.YELLOW);
+							if(board[j][i] == P2_PAWN) {
+								p2_pawn_move(j, i);
+							}
+							if(board[j][i] == P2_ROOK) {
+								rook_move(j, i);
+							}
+							if(board[j][i] == P2_BISHOP) {
+								bishop_move(j, i);
+							}
+							if(board[j][i] == P2_KNIGHT) {
+								knight_move(j, i);
+							}
+							if(board[j][i] == P2_KING) {
+								p2_king_move(j, i);
+							}
+							if(board[j][i] == P2_QUEEN) {
+								queen_move(j, i);
+							}
 						}
 					}
-					else if(board[j][i] / 10 == 2) {
-						if(board[j][i] == P2_PAWN) {
-							p2_pawn_move(j, i);
-						}
-						if(board[j][i] == P2_ROOK) {
-							rook_move(j, i);
-						}
-						if(board[j][i] == P2_BISHOP) {
-							bishop_move(j, i);
-						}
-						if(board[j][i] == P2_KNIGHT) {
-							knight_move(j, i);
-						}
-						if(board[j][i] == P2_KING) {
-							p2_king_move(j, i);
-						}
-						if(board[j][i] == P2_QUEEN) {
-							queen_move(j, i);
-						}
-					}
+					
 				}
-				
 			}
 		}
 		
 		//다음 클릭
-		for(int k = 0; k < SIZE; k++) {
-			for(int l = 0 ; l < SIZE; l++) {
-				if(e.getSource() == map_btn[l][k] && status == 2) {
-					status = 1;
-					System.out.println("222");
-					movetoRED(l, k);
-					movetoYELLOW(l, k);
+		else if(status == 2) {
+			status = 1;
+			for(int i = 0; i < SIZE; i++) {
+				for(int j = 0 ; j < SIZE; j++) {
+					if(e.getSource() == map_btn[j][i]) {
+						if(map_btn[j][i].getBackground() == Color.RED) {
+							player_turn++;
+							movetoRED(j, i);
+						}
+						else if(now_loc[0] == j && now_loc[1] == i) {
+							cancel(j, i);
+						}
+						if((board[j][i] / 10) == (player_turn % 2) + 1) {
+							cancel(j, i);
+						}
+					}
 				}
 			}
+			image_draw();
+			turn_box(player_turn % 2);
 		}
 	}
-	
 }
 
 public class Button_Chess {
