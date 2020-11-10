@@ -157,7 +157,7 @@ class MyPanel extends JPanel implements MouseListener, MouseMotionListener {
 		int x = e.getX();
 		int y = e.getY();
 		for (int i = 0; i < 4; i++) {
-			arrow[i].color = Color.white;
+			arrow[i].color = Color.WHITE;
 		}
 	}
 
