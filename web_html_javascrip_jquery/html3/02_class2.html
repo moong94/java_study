@@ -1,0 +1,38 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>css를 사용한 하위 클래스 정의</title>
+			<style>
+			/*.box라는 이름을 가진 클래스의 자식(내부태그)으로 존재하는 모든 h2태그에게 적용*/
+				.box h2{color:red;}
+				
+				/*span만 컬러 변경하기*/
+				span{color:gray;}
+				
+				/*box라는 클래스의 span_blue라는 클래스에게 색상적용*/
+				.box .span_blue{color:blue;}
+				
+				/*span_green이라는 이름의 클래스에게 초록색 적용*/
+				.span_green{color:green;}
+				
+			</style>
+	</head>
+	
+	<body>
+
+	<!--처음엔 div태그에만 box라고하는 클래스명 주고 진행해보고,
+		이후에 span에 클래스명을 줘서 결과 확인해보자-->
+		<div class="box">
+			<h2><span>클래스</span> 연습</h2>
+			
+			<div class="box">
+				<h2><span class="span_blue">클래스</span> 연습2</h2>
+			</div>		
+		</div>
+		
+		<h2>클래스 <span class="span_green">연습3</span></h2>
+		
+	</body>
+	
+</html>

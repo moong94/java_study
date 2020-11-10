@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 레이아웃</title>
+
+	<!--body영역 작성 후 style및 script추가.-->
+		<!--
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		-->
+		<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>	
+	<style>
+
+		body {
+			margin:20px auto;
+			padding:0;	   	width:600px;
+			font-size:13px;
+			font-family:Arial, Helvetica, sans-serif;
+			background:#05184D; }
+
+		div#slider {
+			margin:0 auto; 
+			background:#FFF; 
+			width:600px; 
+			border:#FDF6DD 2px solid;
+			margin-top:100px;
+			overflow:hidden;
+			position:relative; }
+
+		div#viewer { height:350px; position:relative;  }
+
+		img{ 		position:absolute;  }
+
+		img#image1{	left:0px;	top:0px;	}
+		img#image2{	left:600px;	top:0px;	}
+		img#image3{	left:1200px;	top:0px;	}
+		img#image4{	left:1800px;	top:0px;	}
+		
+		/*--------   ul li CSS ------------ */		
+		#btnGroup {
+			position:absolute; 	bottom:2%;  	right:0; 	margin:0;
+			padding:0;  }
+				   
+		#btnGroup li {  float:left; width:16px;  height:16px;			
+			list-style:none;  margin-right:6px;	 background-color:#60F;
+			cursor:pointer;  }
+						
+		ul#btnGroup li a{  	text-decoration:none;  	text-align:center;
+			background:#FDF6DD; 	display:block;  	width:100%;
+			height:100%; 	color:#000;  }
+
+		ul#btnGroup li a:hover{	background:#CCFF00;	}
+	</style>
+
+	<script>
+	
+		$(function(){
+
+			function slideTarget(n){
+				//n이 0이면 0위치로 포지션 변경,
+				//n이 1이면 -600위치로 포지션 변경 애니메이션이 0.5초간 적용
+				var pos = Number(n) * -600;
+				$("#viewer").animate({left:pos}, 500);
+			}
+
+			$("ul li a").click(function(){
+				/*a태그의 부모요소, 즉 li태그의 id속성 변수에 저장*/
+				/*아이디가 btn0인 a태그를 누르면 strName에 btn0이 들어감*/
+				var strName = ($(this).parent().attr("id"));
+				
+				/*0부터 시작. 3번째 문자부터 1개만 잘라냄*/
+				slideTarget(strName.substr(3, 1));
+				return false;/*return true넣고도 해보자.*/
+			});
+		});	
+	</script>
+</head>
+
+<body>
+	<div id="slider">
+		<div id="viewer">
+			<img id="image1" src="image/slide1.jpg" alt="">
+			<img id="image2" src="image/slide2.jpg" alt="">
+			<img id="image3" src="image/slide3.jpg" alt="">
+			<img id="image4" src="image/slide4.jpg" alt="">
+		</div> 
+		
+	  <ul id="btnGroup">
+			<li id="btn0"><a href="image/slide1.jpg">1</a></li>
+			<li id="btn1"><a href="image/slide2.jpg">2</a></li>
+			<li id="btn2"><a href="image/slide3.jpg">3</a></li>
+			<li id="btn3"><a href="image/slide4.jpg">4</a></li>        
+		</ul>		
+	</div>
+</body>
+<!-- style및 script에 내용추가 -->
+
+</html>

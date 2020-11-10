@@ -1,0 +1,112 @@
+﻿<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>fixed</title>
+
+	<style>
+		body {
+			margin: 10px;
+		}
+
+		li {
+			list-style: none;
+		}
+
+		/*이건 reset.css에 있는거라 안써도 됨*/
+
+		/*fixed속성이 적용된 요소는 스크롤을 내려도 한 자리에 고정된다*/
+		#header {
+			width: 200px;
+			position: fixed;
+			left: 50px;
+			top: 30px;
+		}
+
+		p {
+			width: 200px;
+			font: 1.5em "돋움", dotum;
+			color: gray;
+		}
+
+		p img {
+			display: block;
+		}
+
+		ul {
+			width: 150px;
+			margin: 10px 0;
+		}
+
+		ul li a {
+			display: block;
+			background: #123456;
+			margin: 2px 0px;
+			padding: 5px;
+			color: #ffffff;
+			font: bold 1em arial;
+			text-decoration: none;
+		}
+
+		ul li a:hover {
+			background: #456789;
+		}
+
+		#container {
+			width: 300px;
+			height: 1500px;
+			margin-left: 250px;
+			background: #999999;
+			color: #ffffff;
+		}
+
+		#footer {
+			width: 550px;
+			position: fixed;
+			bottom: 0px;
+		}
+
+		address {
+			font-style: normal;
+			/*address의 기본 글씨체인 이텔릭을 normal로 변경*/
+			background: #000000;
+			padding: 10px;
+			color: #ffffff;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="header">
+		<p><img src="../image/background.jpg" alt="" />fixed 메뉴</p>
+
+		<ul>
+
+			<li><a href="#">COMPANY</a></li>
+
+			<li><a href="#">PRODUCT</a></li>
+
+			<li><a href="#">CUSTOMER</a></li>
+
+			<li><a href="#">COMMUNITY</a></li>
+
+		</ul>
+	</div>
+
+	<div id="container">
+		<p>커피는 독한 향을 좋아하는 사람도 매우 좋아하며 심한 경우
+			태어나기 전부터 커피를 마신 듯 강한 중독 증세를 보이는 경우가 많다.
+			심지어 원두를 씹어서 향에 자신을 담그는 사람도 있고 설탕, 시럽 등 다른 조미를
+			절대로 허락하지 않는 오직 커피맛만을 고집하는 마니아들이 늘고 있다.</p>
+	</div>
+
+	<div id="footer">
+		<!--주소, 저작권 등의 항목을 주로 담는 address태그-->
+		<address>Copyright Allright Reserved.</address>
+	</div>
+
+</body>
+
+</html>

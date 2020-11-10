@@ -1,0 +1,40 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>포지션 absolute</title>
+		<!--요놈은 내부 스타일시트로 ㄱㄱ-->
+ 		<style>
+			/*absolute는 다른 요소와 겹칠 수 있고 본래의 판에서 떨어져 나와 떠 있게 된다.*/
+			*{margin:0px; padding:0px;}
+			
+			body{margin:40px; 
+					font:0.8em "돋움", dotum;}
+					
+			.box{width:130px; height:80px;}
+
+			p{width:130px; height:80px;
+				padding:10px; color:#ffffff; 
+				font-weight:bold;}
+				
+			.mred{background:red;}
+			
+			/*앱솔루트 속성이 추가되면 .mgreen을 덮어버려서 보이지 않게 된다.
+				앱솔루트 요소는 위치값을 주지 않으면 제멋대로 자리잡게 된다.*/
+			.mblue{background:blue; position:absolute;}
+			.mgreen{background:green;}	
+		</style>
+			
+	</head>
+	
+	<body>
+		
+		<div class="box">
+			<p class="mred">박스의 포지션 속성을 보자</p>
+			<p class="mblue">박스의 포지션 속성을 보자</p>
+			<p class="mgreen">박스의 포지션 속성을 보자</p>
+		</div>
+		
+	</body>
+
+</html>

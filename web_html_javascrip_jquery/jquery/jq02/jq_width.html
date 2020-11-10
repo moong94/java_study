@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div {
+            width: 70px;
+            height: 50px;
+            float: left;
+            margin: 5px;
+            background: red;
+        }
+        .next {            background: blue;        }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <script>
+        $(document).ready(function () {
+            var modWidth = 50;
+            $("div").click(function () {
+                $(this).width(modWidth).addClass("next");
+                modWidth -= 8;
+            });
+        });
+    </script>
+</body>
+</html>

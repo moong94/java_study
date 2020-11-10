@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script src="js/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+	 /* $(document).ready(function() {
+		
+		$("#plus").click(function() {
+			var n1 = $("#num1").val();
+			var n2 = $("#num2").val();
+			// 문자 => 숫자 변환
+			var num1 = Number(n1);//parseInt(n1);
+			var num2 = Number(n2);//parseInt(n2);
+			var result = num1 + num2;
+			
+			//document.getElementById("result").value = result;
+			$("#result").val(result);
+		});
+		
+	});//ready */
+	
+	 /* 
+	 $(document).ready(function(){
+			//동적으로 Event처리 
+			$("#plus").bind('click',function(){
+				alert('ddd');
+				$(this).unbind('click');//이벤트 제거
+			});
+	}); 
+	*/
+	
+	$(document).ready( function() {
+		
+		$("#plus, #minus, #multi").click( function(){
+			calc( $(this) );
+		} );		
+	});
+	
+	function calc( obj ){
+		
+		console.log(obj.val());
+		
+		var n1 = $("#num1").val();
+		var n2 = $("#num2").val();
+		
+		// 문자 => 숫자 변환
+		var num1 = Number(n1);//parseInt(n1);
+		var num2 = Number(n2);//parseInt(n2);
+		
+		var result = 0;
+		
+		switch(obj.val()){
+		case "합":
+			result = num1 + num2;
+			break;
+			
+		case "차":
+			result = num1 - num2;
+			break;
+			
+		case "곱":
+			result = num1 * num2;
+			break;
+		}//switch
+		
+		$("#result").val(result);
+		
+	}//calc()
+	
+</script>
+
+</head>
+
+<body>
+	<input type="text" id="num1" size="5" /> +
+	<input type="text" id="num2" size="5" /> =
+	<input type="text" id="result" size="7" />
+	
+	<br>
+	
+	<input type="button" id="plus" value="합" />
+	<input type="button" id="minus" value="차" />
+	<input type="button" id="multi" value="곱" />
+</body>
+
+</html>

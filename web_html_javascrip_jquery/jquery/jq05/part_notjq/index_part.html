@@ -1,0 +1,122 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8" />
+	<title>publish</title>
+
+	<script src="js/jquery-1.8.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+
+	<!--base.css와 main_part.css만들어서 연결-->
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/main_part.css" />
+
+	<script>
+		$(function(){
+			
+			var bnnNum = 0;
+			$(".prev").click(function(){
+				if(bnnNum <= 0){
+					//더이상 전 페이지로 이동할 수 없도록 return
+					//return을 통해 아래쪽 코드로 접근하지 못하게 하는것이 목적이기 때문에
+					//리턴값은 true든 false든 상관없다.
+					return false;
+				}
+				bnnNum--;
+				var book_w = $("#recomm_book").width();
+				$("#book_frame").animate({left:-book_w * bnnNum}, 300, 
+					function(){
+						//페이저 이미지를 선택안된 이미지로 맞추고,
+						//eq(bnnNum)위치의 이미지만 선택상태로 바꾼다.
+						$("#book_roll img").attr("src", "images/state_out.png");
+						$("#book_roll img").eq(bnnNum).attr("src", "images/state_over.png");
+					});
+			});
+
+			$(".next").click(function(){
+				if(bnnNum >= 1){
+					return false;//더이상 다음 페이지로 이동할 수 없도록 return
+				}
+
+				bnnNum++;
+				var book_w = $("#recomm_book").width();
+				$("#book_frame").animate({left:-book_w * bnnNum}, 300, 
+					function(){
+						$("#book_roll img").attr("src", "images/state_out.png");
+						$("#book_roll img").eq(bnnNum).attr("src", "images/state_over.png");
+					});
+			});
+		});
+	</script>
+</head>
+
+<body>	
+	<section id="recomm_book">	
+		<h1 class="skip">신간추천</h1>
+
+			<div id="book_frame">	
+				<div id="book_content1" class=" bookcon">			
+					<h2><img src="images/newbook1_tit.gif" alt="안드로이드로 용돈벌기" /></h2>
+					<ul>
+						<li class="pic">
+							<img src="images/new_book1.jpg" alt="초보가 고수되기1 안드로이드로 용돈벌기" />
+						</li>
+
+						<li class="smr">
+							<img src="images/newbook1_exp.gif" alt="구글 안드로이드 마켓에 등록된 4가지 상용앱 '핑거러너 / 기웃 / 동물원 / 랭킹' 등의 풀 소스를 활용하여 설명하고, 여러 Tip과 Note를 함께 제공합니다." />
+						</li>
+
+						<li class="detail">
+							<a href="#">
+								<img src="images/detile_view.gif" alt="자세히 알아보기" />
+							</a>
+						</li>
+					</ul>
+				</div>
+
+				<div id="book_content2"  class=" bookcon">			
+					<h2><img src="images/newbook2_tit.gif" alt="아이폰으로 용돈벌기" /></h2>
+
+					<ul>
+						<li class="pic">
+							<img src="images/new_book2.jpg" alt="초보가 고수되기2 아이폰으로 용돈벌기" />
+						</li>
+
+						<li class="smr">
+							<img src="images/newbook2_exp.gif" alt="앱스토어에 등록된 4가지 상용앱 'Dailypen/Back&amp;Wall/Weatherboy/기웃 등의 풀 소스를 활용하여 설명하고, 여러 Tip과 Note를 함께 제공합니다." />
+						</li>
+
+						<li class="detail">
+							<a href="#">
+								<img src="images/detile_view.gif" alt="자세히 알아보기" />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div><!-- book_frame -->
+
+		<div id="arrow">
+			<a class="prev" href="#" onclick="return false">
+				<img src="images/btn_prev.gif" alt="이전" />
+			</a>
+
+			<a class="next" href="#" onclick="return false">
+				<img src="images/btn_next.gif" alt="다음" />
+			</a>		
+		</div>
+
+		<ul id="book_roll">
+			<li>
+				<img class="firstactive" src="images/state_over.png" alt="안드로이드로 용돈벌기 활성화 상태" />
+			</li>
+
+			<li>
+				<img class="secondactive" src="images/state_out.png" alt="아이폰으로 용돈벌기 비활성화 상태" />
+			</li>
+		</ul>
+
+	</section>
+</body>
+
+<!-- base.css"와 main_part.css에 내용 추가하고 <script>에서 이벤트 처리구문까지 ㄱㄱ-->
+</html>

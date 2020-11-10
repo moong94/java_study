@@ -1,0 +1,97 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>html5문서</title>
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/only_totalmenunotjq.css">
+        <script src="js/jquery-1.11.2.min.js"></script>
+
+		<script>
+			$(function(){
+				$("#gnb> li> a").mouseenter(function(){
+					//"background"를"none"으로 잡아야 마우스 오버시에 배경색이 누적되는것을 막을 수 있다.
+					$("#gnb>li>a").css("background","none");
+					$("#t_menu").stop().slideDown("normal");
+					$(this).css("background","#0f1a38");
+				});
+				
+				$("#t_menu").mouseleave(function(){
+					$("#gnb> li> a").css("background","none");
+					$("#t_menu").stop().slideUp("normal");
+				});		  
+			});
+		</script>
+	</head>
+
+
+<body>
+    <div id="menu">
+		<ul id="gnb">
+			<li><a href="#">EDIYA COFFEE</a></li>
+			<li><a href="#">COFFEE STORY</a></li>
+			<li><a href="#">PRODUCT</a></li>
+			<li><a href="#">FRANCHISE</a></li>
+			<li><a href="#">EVENT&NEWS</a></li>
+			<li><a href="#">STORE</a></li>
+		</ul>
+	</div>
+
+  <div id="t_menu">
+		<div id="menubox">
+			<ul class="n1">
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">CEO인사말</a></li>
+				<li><a href="#">비전/경영철학</a></li>
+				<li><a href="#">연혁</a></li>
+				<li><a href="#">사회공헌</a></li>
+				<li><a href="#">찾아오시는 길</a></li>
+			</ul>
+
+			<ul class="n2">
+				<li><a href="#">이디야커피</a></li>
+				<li><a href="#">이디야원두</a></li>
+				<li><a href="#">이디야 로스팅</a></li>
+				<li><a href="#">이디야 블렌팅</a></li>
+				<li><a href="#">커피연구소</a></li>
+				<li><a href="#">커피아카데미</a></li>
+			</ul>
+
+			<ul class="n3">
+				<li><a href="#">신제품</a></li>
+				<li><a href="#">COFFEE</a></li>
+				<li><a href="#">BEVERAGES</a></li>
+				<li><a href="#">DESSERT</a></li>
+				<li><a href="#">MD</a></li>
+				<li><a href="#">블렌딩원두</a></li>
+				<li><a href="#">비니스트</a></li>
+			</ul>
+
+			<ul class="n4">
+				<li><a href="#">가명안내</a></li>
+				<li><a href="#">가명절차</a></li>
+				<li><a href="#">인테리어</a></li>
+				<li><a href="#">예상투자비용</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">가맹상담신청</a></li>
+			</ul>
+
+			<ul class="n5">
+				<li><a href="#">이디야소식</a></li>
+				<li><a href="#">이벤트</a></li>
+			</ul>
+
+			<ul class="n6">
+				<li><a href="#">매장안내</a></li>
+				<li><a href="#">이디야쇼핑몰</a></li>
+				<li><a href="#">비전/경영철학</a></li>
+			</ul>
+
+		</div><!--menubox-->
+	</div><!--t_menu-->
+
+	<div id="box">
+		<img src="image/coffee01_05.png" alt="">
+	</div>   
+</body>
+</html>

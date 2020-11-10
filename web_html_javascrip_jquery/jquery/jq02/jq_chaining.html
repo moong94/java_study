@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("#dog").show().fadeOut("slow").slideDown("slow");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button>메소드 체이닝 시작</button>
+    <img id="dog" src="dog.png"
+        alt="" width="120" height="100" style="display: none" />
+</body>
+</html>

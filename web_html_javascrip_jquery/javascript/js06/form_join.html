@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>회원가입</title>
+    <style>
+        #wrap{
+            text-align:center;
+            
+        }
+        table{
+           width:80%;
+           margin:auto;
+           border-collapse:collapse;
+        }
+        body, td, input, select, textarea, p{
+           font-family:verdana, sans-serif;    
+           font-size:13px;
+           padding: 4px;    
+        }
+        .box{
+           border: 1px solid silver;   
+        }
+        td.m1{
+            width:20%;
+            text-align:right;
+            padding: 4px;
+        }
+        span.m2{
+            color:blue;
+            font-size:12px;
+        }
+        td h3{
+             text-align:center;   
+        }
+        .m3{
+            background-color:skyblue;   
+        }
+    </style>
+</head>
+<body>
+  <div id="wrap">
+       <h1>Join Page</h1>
+       <form name="frm" id="frm" action="join.jsp" method="get">
+       <table border="1">
+           <tr>
+               <td colspan="2" class="m3"><h3>회원가입</h3></td>
+               
+           </tr>
+           <tr>
+               <td class="m1">*이름</td>
+               <td>
+                   <input type="text" name="name" id="name" class="box">
+                   <span class="m2">(예: 홍길동)</span>
+               </td>
+           </tr> 
+           <tr>
+               <td class="m1">*아이디</td>
+               <td>
+                   <input type="text" name="uid" id="uid" class="box">
+                   <button type="button" onclick="">중복확인</button>
+                   <br>
+                   <span class="m2">
+                       (4~12자 영문/숫자 가능, 한글, 특수문자
+                       ID는 사용할 수 없습니다.)
+                   </span>
+               </td>
+           </tr>           
+       </table>
+       </form>
+  </div>       
+</body>
+</html>
+<!--join.html-->

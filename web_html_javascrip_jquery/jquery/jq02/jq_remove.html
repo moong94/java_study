@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <style>
+        p{  background-color:yellow;        }
+        .container {      height: 80px; width: 200px;  border: 1px dotted red; }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                $(".container").remove();
+            });
+        });
+        $(document).ready(function () {
+            $("#button2").click(function () {
+                $(".container").empty();
+            });
+        });
+    </script>
+</head>
+<body>
+
+    <button id="button1">remove()</button>
+    <button id="button2">empty()</button><br />
+    <div class="container">
+        <p class="hello">Hello</p>
+        <p class="goodbye">Goodbye</p>
+    </div>
+    <br>
+</body>
+</html>

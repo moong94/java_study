@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>메뉴종합</title>
+	<style>
+		html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,
+		blockquote,pre,abbr,address,cite,code,del,dfn,em,img,
+		ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,
+		fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+		article,aside,canvas,details,figcaption,figure,footer,header,hgroup,
+		menu,nav,section,summary,time,mark,audio,video{margin:0; padding:0;}
+		li { list-style:none; } /*li태그 앞에 까만점 제거*/
+		body {
+			font-size: 0.8em;
+		}
+
+		/*글씨 사이즈*/
+		a {
+			text-decoration: none;
+		}
+
+		/*링크에 밑줄제거*/
+
+		#menu {
+			background: #1d326c;
+		}
+
+		#gnb {
+			margin: 0 auto;
+			width: 1200px;
+			height: 52px;
+			background: #1d326c;
+		}
+
+		#gnb>li {
+			float: left;
+			width: 200px;
+		}
+
+		#gnb>li>a {
+			display: block;
+			line-height: 52px;
+			color: #ffffff;
+			font-size: 1.2em;
+			text-align: center;
+			background: #1d326c;
+		}
+
+		#gnb a:hover {
+			background: #1d32cc;
+		}
+
+		/*전체메뉴 영역*/
+		#t_menu {
+			width: 100%;
+			background: rgba(238, 240, 244, 0.2);
+		}
+
+		#menubox {
+			width: 1200px;
+			margin: 0 auto;
+			height: 227px;
+		}
+
+		#t_menu ul {
+			height: 227px;
+			float: left;
+			width: 200px;
+			text-align: center;
+		}
+
+		#t_menu ul>li>a:hover {
+			color: #ff8080;
+		}
+
+		#t_menu li {
+			height: 30px;
+		}
+
+		#t_menu li {
+			line-height: 30px;
+		}
+
+		/*자간*/
+		#t_menu li a {
+			color: gray;
+			display: block;
+		}
+
+		#box {
+			width: 1200px;
+			margin: 0 auto;
+			text-align: center;
+			/*background:gray;*/
+		}
+
+		/*어떻게 나오나 궁금해서 넣어봄*/
+	</style>
+</head>
+
+<body>
+	<div id="menu">
+		<ul id="gnb">
+			<li><a href="#">EDIYA COFFEE</a></li>
+			<li><a href="#">COFFEE STORY</a></li>
+			<li><a href="#">PRODUCT</a></li>
+			<li><a href="#">FRANCHISE</a></li>
+			<li><a href="#">EVENT&NEWS </a></li>
+			<li><a href="#">STORE</a></li>
+		</ul>
+	</div>
+
+	<div id="t_menu">
+		<div id="menubox">
+			<ul class="n1">
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">CEO인사말</a></li>
+				<li><a href="#">비전/경영철학</a></li>
+				<li><a href="#">연혁</a></li>
+				<li><a href="#">사회공헌</a></li>
+				<li><a href="#">찾아오시는 길</a></li>
+			</ul>
+
+			<ul class="n2">
+				<li><a href="#">이디야커피</a></li>
+				<li><a href="#">이디야원두</a></li>
+				<li><a href="#">이디야로스팅</a></li>
+				<li><a href="#">이디야블렌딩</a></li>
+				<li><a href="#">사회공헌</a></li>
+				<li><a href="#">커피연구소</a></li>
+				<li><a href="#">커피아카데미</a></li>
+			</ul>
+
+			<ul class="n3">
+				<li><a href="#">신제품</a></li>
+				<li><a href="#">COFFEE</a></li>
+				<li><a href="#">BEVERAGES</a></li>
+				<li><a href="#">DESSERT</a></li>
+				<li><a href="#">MD</a></li>
+				<li><a href="#">블렌딩원두</a></li>
+				<li><a href="#">비니스트</a></li>
+			</ul>
+
+			<ul class="n4">
+				<li><a href="#">가맹안내</a></li>
+				<li><a href="#">가맹절차</a></li>
+				<li><a href="#">인테리어</a></li>
+				<li><a href="#">예상투자비용</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="#">가맹상담신청</a></li>
+			</ul>
+
+			<ul class="n5">
+				<li><a href="#">이디야소식</a></li>
+				<li><a href="#">이벤트</a></li>
+			</ul>
+
+			<ul class="n6">
+				<li><a href="#">매장안내</a></li>
+				<li><a href="#">이디야쇼핑몰</a></li>
+				<li><a href="#">비전/경영철학</a></li>
+			</ul>
+		</div>
+		<!--t_menu-->
+	</div>
+	<!--menubox-->
+
+	<div id="box">
+		<img src="06_images/coffee01_05.png" alt="대문이미지" />
+	</div>
+	<!--스타일 추가하고 결과 확인-->
+</body>
+
+</html>

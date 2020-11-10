@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script>
+
+                $(document).ready(function () {
+                    $("input").focus(function () {
+                        $(this).css("background-color", "yellow");
+                    });
+
+                                $("input").blur(function () {
+                                    $(this).css("background-color", "white");
+                                });
+                });
+
+    </script>
+</head>
+<body>
+    아이디:<input type="text" name="name"><br>
+</body>
+</html>

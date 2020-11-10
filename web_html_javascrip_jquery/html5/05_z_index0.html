@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>z인덱스</title>
+		
+		<style>			
+			p{ border:1px solid black; 
+				padding:10px; 
+				width:80px;
+				height:80px; 
+				position:absolute; }/*absolute(절대위치: 기본값 0, 0기준)*/
+				
+			.box1{background:yellow; 
+						left:100px; top:100px; /*절대위치를 기준으로 100, 100지점에 80px크기의 박스를 그린다*/
+						z-index:3;}/*z인덱스가 클 수록 화면 위쪽에 자리잡는다*/
+						
+			.box2{background:orange; 
+						left:120px; top:120px;
+						z-index:2;}
+						
+			.box3{background:teal; 
+						left:140px; top:140px;
+						z-index:1;}
+		</style>
+	</head>
+
+	<body>
+		<h2>박스의 겹치는 순서 정하기</h2>
+		<p class="box1">박스1</p>
+		<p class="box2">박스2</p>
+		<p class="box3">박스3</p>
+	</body>
+
+</html>

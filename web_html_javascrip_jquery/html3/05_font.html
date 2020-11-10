@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>font</title>
+			<style>
+				.a1{font-size:20px;}
+				
+				/*기울이기*/
+				.a2{font-style:italic;}
+				/*.a2{font-style:normal;} 기울이기 싫을땐 normal*/
+				
+				/*두껍게*/
+				.a3{font-weight:bold;}
+				
+				/*여러개의 글씨체를 준비해놓고, 브라우저에서 아래의 글씨체를 제공한다면
+					그것을 사용, 글씨체가 지원되지 않는다면 
+					가장 표준적인 글씨체인 sans-serif(돋움체 비스무리)를 사용하도록 정의해두면 안전하다*/
+				.a4{font-family:"궁서", dotum, "굴림", gulim, sans-serif;}
+				
+				.a5{font-variant:small-caps;} /*소문자만한 대문자*/
+				
+				/*폰트에 속성을 한번에 적용하려면 순서를 지켜줘야함.
+					두께, 스타일, 스몰캡, 사이즈, 폰트패밀리, 백그라운드*/
+				.a6{font:bold 
+					normal 
+					small-caps 
+					18px/1.6 
+					"돋움", gullim, sans-serif;
+					background:aqua;}
+					
+					/*두께 속성 적용하려면 글씨체까지 함께 적용되어 있어야 함*/
+					/*font:bold 20px;(X)
+					font:bold 20px "돋움";(O)*/
+					
+					/*사이즈만 정의하려면 font-size라고 정확히 명시되어 있어야 함*/
+					/*font:25px;(X)
+					  font-size:25px;(O)*/
+			</style>
+	</head>
+	
+	<body>	
+		<p class="a1">글자 크기</p>
+		<p class="a2">글자 스타일</p>
+		<p class="a3">글자 굵기</p>
+		<p class="a4">글꼴</p>
+		<p class="a5">The end</p>	
+		
+		<p class="a6">폰트에 css적용시 속성 접근 순서</p>
+	</body>
+	
+</html>
+
+

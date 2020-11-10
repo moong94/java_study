@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script>
+    function sub() {
+        var x = document.getElementById("name");
+        x.value = x.value.toLowerCase();
+    }
+</script>
+</head>
+<body>
+영어단어: <input type="text" id="name" onchange="sub()">
+<p>입력필드를 벗어나면 소문자로 변경됩니다.</p>
+</body>
+</html>

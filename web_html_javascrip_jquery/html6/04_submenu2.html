@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>세로 서브메뉴 디자인</title>
+
+	<style>
+			html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,
+		blockquote,pre,abbr,address,cite,code,del,dfn,em,img,
+		ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,
+		fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+		article,aside,canvas,details,figcaption,figure,footer,header,hgroup,
+		menu,nav,section,summary,time,mark,audio,video{margin:0; padding:0;}
+
+		li { list-style:none; } /*li태그 앞에 까만점 제거*/
+		#nav {
+			width: 1000px;
+			height: 45px;
+			padding: 6px 7px;
+			background: #666666;
+			margin: 0 auto;
+		}
+
+		/*sub에만 영향을 준다( > )*/
+		#nav>li {
+			float: left;
+			position: relative;
+			margin: 3px 10px;
+			margin-left: 80px;
+		}
+
+		#nav li a {
+			display: block;
+			font-family: "고딕";
+			font-weight: blod;
+			padding: 10px 20px;
+			color: #e7e5e5;
+			text-decoration: none;
+		}
+
+		#nav li:hover a {
+			background: #ffffff;
+			color: #444444;
+		}
+
+		#nav ul {
+			position: absolute;
+			left: 0;
+			top: 45px;
+			width: 150px;
+			border: 1px solid #b4b4b4;
+			opacity: 0;
+		}
+
+		/*opacity:0 - 숨김*/
+
+		#nav li:hover ul {
+			opacity: 1;
+		}
+
+		/*opacity:1 - 나타남*/
+
+		#nav ul a {
+			font-weight: normal;
+			color: #333333;
+		}
+
+		#nav ul li:hover a {
+			background: #cccccc;
+			color: ffffff;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<ul id="nav">
+		<li><a href="#">처음으로</a></li>
+
+		<li>
+			<a href="#">여행안내</a>
+			<ul>
+				<li><a href="#">소개합니다</a></li>
+				<li><a href="#">오시는 길</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<a href="#">이용방법</a>
+			<ul>
+				<li><a href="#">객실 둘러보기</a></li>
+				<li><a href="#">요금 안내</a></li>
+				<li><a href="#">예약하기</a></li>
+				<li><a href="#">예약안내</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<a href="#">게시판</a>
+			<ul>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">Q/A</a></li>
+			</ul>
+		</li>
+
+		<li><a href="#">프로필</a></li>
+
+	</ul>
+	<!--스타일 추가하고 결과 확인-->
+</body>
+
+</html>

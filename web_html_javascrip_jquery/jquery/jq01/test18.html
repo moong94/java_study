@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	img { width: 300px; height: 300px;}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+var timer=null;
+var bRight=true;
+	//  특정시간마다 함수를 호출 
+	//  1회마다 marginLeft에 
+	//  20px만큼 증가 시킨다.
+		
+	$(document).ready(function(){
+		$("img").css("border","2px solid red");
+		//.css("marginLeft","10px");
+
+		$("input:button").click(function(){
+			if(timer==null)
+			   timer = setInterval(moveImage,10);
+		});
+		
+		var position=0;
+		function moveImage(){
+			if(bRight)
+			   position+=2;
+			else
+			   position-=2;
+			if(position>400)bRight=false;
+			if(position<0)bRight=true;
+			
+			$("img").css("marginLeft",position);
+
+		}
+	});
+</script>
+</head>
+<body>
+	<input type="button" value="우로이동" /> <br>
+	<img  src="images/ex.jpg" />
+</body>
+</html>

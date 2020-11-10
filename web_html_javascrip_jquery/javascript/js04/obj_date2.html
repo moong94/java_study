@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <script>
+        function checkDate() {
+
+            var s = document.getElementById("pdate").value;
+            var pdate = new Date(s);
+            var today = new Date();
+            var diff = today.getTime() - pdate.getTime();
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+            if (days > 30) {
+                alert("교환 기한이 지났습니다.");
+            }else{
+                alert("교환 가능 합니다.");
+            }
+        }
+    </script>
+</head>
+<body>
+        구입날짜:
+        <input type="date" id="pdate">
+        <button onclick="checkDate()">검사</button>
+</body>
+</html>

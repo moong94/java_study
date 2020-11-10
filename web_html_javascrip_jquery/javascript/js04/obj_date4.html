@@ -1,0 +1,12 @@
+﻿<div id='clock'></div>
+
+<script>
+    function setClock() {
+        var now = new Date();
+        var s = now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+        document.getElementById('clock').innerHTML = s;
+        setTimeout('setClock()', 1000);
+
+    }
+    setClock();
+</script>

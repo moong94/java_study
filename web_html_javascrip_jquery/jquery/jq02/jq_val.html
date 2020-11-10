@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            alert($("#target").val());
+        });
+    });
+</script>
+</head>
+
+<body>
+    이름: <input type="text" id="target" value =""><br />
+    <button id="text">val()</button>
+</body>
+</html>

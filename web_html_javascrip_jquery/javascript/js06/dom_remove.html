@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+
+    <script>
+        function removeNode() {
+            var parent = document.getElementById("target");
+            var child = document.getElementById("p1");
+            parent.removeChild(child);
+        }
+
+    </script>
+    </head>
+<body>
+    <div id="target">
+        <p id="p1">첫번째 단락</p>
+        <p id="p2">두번째 단락</p>
+    </div>
+    <button onclick="removeNode()">누르세요!</button>
+</body>
+</html>

@@ -1,0 +1,12 @@
+﻿
+<script>
+    function addtext(t) {
+        if (document.createTextNode) {
+
+            var node = document.createTextNode(t);  
+            document.getElementById("target").appendChild(node);
+        }
+    }
+</script>
+<div id="target" onclick="addtext('동적으로 텍스트가 추가됩니다.')" 
+	style="font: 20px bold;">여기를 클릭하세요.</div>

@@ -1,0 +1,21 @@
+@charset"utf-8";
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,
+blockquote,pre,abbr,address,cite,code,del,dfn,em,img,
+ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,
+menu,nav,section,summary,time,mark,audio,video{margin:0; padding:0;}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {  display: block; }
+
+li { list-style-type:none; }
+img,fieldset,iframe{border:0;}
+img,fieldset { border:none; }
+img{ max-width:100%; }/*ipad사이즈에서 userlogin 의 title등 %로 된  것을 위해*/
+li img, dd img { vertical-align:top; }
+input { vertical-align:middle; }
+hr{display:none;}
+
+#skip, .skip { font-size:0; width:0; height:0; line-height:0; position:absolute; left:-9999px; }
+.cf.after {content:"";display:block;clear:both;}

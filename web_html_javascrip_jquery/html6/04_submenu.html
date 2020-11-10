@@ -1,0 +1,228 @@
+﻿<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>서브메뉴 디자인</title>
+
+	<style>
+				html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,
+		blockquote,pre,abbr,address,cite,code,del,dfn,em,img,
+		ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,
+		fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+		article,aside,canvas,details,figcaption,figure,footer,header,hgroup,
+		menu,nav,section,summary,time,mark,audio,video{margin:0; padding:0;}
+		li { list-style:none; } /*li태그 앞에 까만점 제거*/
+		#menu {
+			height: 40px;
+			font-size: 0.75em;
+			width: 100%;
+			background: #63696b;
+		}
+
+		.nav {
+			background: #63696b;
+			height: 40px;
+			position: relative;
+			width: 967px;
+			margin: 0 auto;
+		}
+
+		.nav li {
+			float: left;
+		}
+
+		/*바로 아래 있는 자식 요소에만 속성 적용 ( > ) */
+		.nav>li>a {
+			display: block;
+			line-height: 40px;
+			text-decoration: none;
+			color: #ffffff;
+			font-weight: bold;
+			text-align: center;
+			padding: 0 26px;
+		}
+
+		/*서브메뉴의 display를 none으로 설정하여 화면에서 보이지 않도록 한다.*/
+		.nav .sub {
+			position: absolute;
+			left: 0;
+			top: 40px;
+			display: none;
+		}
+
+		.nav .plus a:hover {
+			background: #aaaaff;
+		}
+
+		.nav>li:hover>a.mm {
+			background: #ef3c84;
+		}
+
+		/*그리고 마우스 오버시 디스플레이를 블록으로 바꿔 보이도록 처리*/
+		.nav>li:hover .sub {
+			display: block;
+		}
+
+		.nav>li:hover>a {
+			background: #4a96de;
+			color: #ffffff;
+		}
+
+
+		.nav .sub li a {
+			display: black;
+			height: 40px;
+			line-height: 40px;
+			padding: 0 5px;
+			text-decoration: none;
+			color: #666666;
+		}
+
+		.nav .sub li a:hover {
+			color: red;
+		}
+
+		.nav .sub2 li:first-child {
+			margin-left: 30px;
+		}
+
+		.nav .sub3 li:first-child {
+			margin-left: 70px;
+		}
+
+		.nav .sub4 li:first-child {
+			margin-left: 100px;
+		}
+
+		.nav .sub5 li:first-child {
+			margin-left: 130px;
+		}
+
+		.nav .sub6 li:first-child {
+			margin-left: 160px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="menu">
+		<ul class="nav">
+			<li>
+				<a href="#">개인뱅킹</a>
+				<ul class="sub">
+					<li><a href="#">조회</a></li>
+					<li><a href="#">이체</a></li>
+					<li><a href="#">신규/해지</a></li>
+					<li><a href="#">공과금/법원</a></li>
+					<li><a href="#">뱅킹보안센터</a></li>
+					<li><a href="#">골드뱅킹</a></li>
+					<li><a href="#">금융서비스</a></li>
+					<li><a href="#">사용자관리</a></li>
+					<li><a href="#">카드/증권</a></li>
+				</ul>
+			</li>
+			<!--li1-->
+			<!----------------------------------------------------------------------->
+
+			<li>
+				<a href="#">자산관리</a>
+				<ul class="sub sub2">
+					<!--클래스명 두개 추가-->
+					<li><a href="#">나의지출</a></li>
+					<li><a href="#">이체</a></li>
+					<li><a href="#">신규/해지</a></li>
+					<li><a href="#">공과금/법원</a></li>
+					<li><a href="#">뱅킹보안센터</a></li>
+					<li><a href="#">골드뱅킹</a></li>
+					<li><a href="#">금융서비스</a></li>
+					<li><a href="#">사용자관리</a></li>
+					<li><a href="#">카드/증권</a></li>
+				</ul>
+			</li>
+			<!--li2-->
+			<!----------------------------------------------------------------------->
+
+			<li>
+				<a href="#">예금신탁</a>
+				<ul class="sub sub3">
+					<!--클래스명 두개 추가-->
+					<li><a href="#">조회/입출금</a></li>
+					<li><a href="#">이체</a></li>
+					<li><a href="#">신규/해지</a></li>
+					<li><a href="#">공과금/법원</a></li>
+					<li><a href="#">뱅킹보안센터</a></li>
+					<li><a href="#">골드뱅킹</a></li>
+					<li><a href="#">금융서비스</a></li>
+					<li><a href="#">사용자관리</a></li>
+					<li><a href="#">카드/증권</a></li>
+				</ul>
+			</li>
+			<!--li3-->
+			<!----------------------------------------------------------------------->
+
+			<li>
+				<a href="#">대출</a>
+				<ul class="sub sub4">
+					<!--클래스명 두개 추가-->
+					<li><a href="#">조회</a></li>
+					<li><a href="#">이체</a></li>
+					<li><a href="#">신규/해지</a></li>
+					<li><a href="#">공과금/법원</a></li>
+					<li><a href="#">뱅킹보안센터</a></li>
+					<li><a href="#">골드뱅킹</a></li>
+					<li><a href="#">금융서비스</a></li>
+					<li><a href="#">사용자관리</a></li>
+					<li><a href="#">카드/증권</a></li>
+				</ul>
+			</li>
+			<!--li2-->
+			<!----------------------------------------------------------------------->
+
+			<li>
+				<a href="#">펀드</a>
+				<ul class="sub sub5">
+					<!--클래스명 두개 추가-->
+					<li><a href="#">조회</a></li>
+					<li><a href="#">이체</a></li>
+					<li><a href="#">신규/해지</a></li>
+					<li><a href="#">공과금/법원</a></li>
+					<li><a href="#">뱅킹보안센터</a></li>
+					<li><a href="#">골드뱅킹</a></li>
+					<li><a href="#">금융서비스</a></li>
+					<li><a href="#">사용자관리</a></li>
+					<li><a href="#">카드/증권</a></li>
+				</ul>
+			</li>
+			<!--li2-->
+			<!----------------------------------------------------------------------->
+
+			<li>
+				<a href="#">외환</a>
+				<ul class="sub sub6">
+					<!--클래스명 두개 추가-->
+					<li><a href="#">조회</a></li>
+					<li><a href="#">이체</a></li>
+					<li><a href="#">신규/해지</a></li>
+					<li><a href="#">공과금/법원</a></li>
+					<li><a href="#">뱅킹보안센터</a></li>
+					<li><a href="#">골드뱅킹</a></li>
+					<li><a href="#">금융서비스</a></li>
+					<li><a href="#">사용자관리</a></li>
+					<li><a href="#">카드/증권</a></li>
+				</ul>
+			</li>
+			<!--li2-->
+			<!----------------------------------------------------------------------->
+
+			<li class="plus"><a href="#">퇴직연금</a></li>
+			<li class="plus"><a href="#">골드</a></li>
+			<li class="plus"><a href="#">보험</a></li>
+			<li class="plus"><a href="#" class="mm">미션플러스</a></li>
+
+		</ul>
+	</div>
+	<!--스타일 추가하고 결과 확인-->
+</body>
+
+</html>

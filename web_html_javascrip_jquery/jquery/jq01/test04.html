@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+// 모든 문서가 로딩된후에 익명함수 실행 
+	$(document).ready(function(){
+		
+		// btn1을 클릭하면 익명함수 실행
+		$("#btn1").click(function(){
+			
+			// id가 aa인요소의 html 얻어오기 
+			//input이나 button등의 컨트롤은 .val로 값을 가져오지만
+			//일반 태그는 .html()로 내용을 가져온다.
+			var aa = $("#aa").html();
+			alert("aa : " + aa);
+			$("#aa").html("<h2>곧 점심시간</h2>");
+			//document.getElementById("aa").innerHTML = "<h2>곧 점심시간</h2>"; 
+		}); 
+		
+		//두번째 버튼을 누르면 bb요소의 글자지우기
+		$("#btn2").click(function(){
+			$("#bb").html("");
+			
+			//콘솔로 결과 확인
+			console.log("값이 지워졌네...");
+		});
+		
+
+		$(".btn3").click(function(){
+			var p = $("p").html();
+			alert(p);
+		});
+	});
+	
+	/*  
+	지역함수에서 변수선언시 var 키워드를 
+	생략하면 이 변수는 전역변수가 된다. 
+	
+	var f1 = function () {
+		 g_b = "하하"; // XXXXXX 
+		console.log("b : " + b );
+	}
+	
+	f1(); // 함수 호출 
+	console.log(b); */
+</script>
+
+</head>
+<body>
+
+	<input type="button" value="btn1" id="btn1" />
+	<input type="button" value="btn2" id="btn2" />
+	<input type="button" value="btn3" class="btn3" />
+
+	<div id="aa">오늘은 수능날</div>
+	<div id="bb">날씨가 추워야하는데</div>
+	<p>수능한파.. 없음 땡 : 열대기후</p>
+</body>
+</html>

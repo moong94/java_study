@@ -1,0 +1,54 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>float(왼쪽, 오른쪽 정렬)</title>
+			
+		<style>	
+		*{margin:0px; padding:0px;}
+		li{list-style:none;}
+		
+		body{font-size:0.75em; margin:10px;}
+		.bbs{width:260px; border:2px solid #cccccc;
+				background:#ffffcc;
+				padding:10px;
+				overflow:hidden;}
+		
+		.bbs h2{float:left; 
+					font-color:#3366ff; margin-bottom:10px;}
+					
+		.bbs ul{clear:both;}/*이 속성이 없으면 h2와 p사이로 ul이 침범해버린다.*/
+		
+		.bbs ul li {height:18px; padding-left:10px;
+						background:url(C:/web/image/bg_dotted.gif) no-repeat 0% 60%;}
+		
+		.bbs ul li a{color:#666666; text-decoration:none;}
+		.bbs ul li a:hover{text-decoration:underline; color:#330099;}
+		
+		.bbs p{float:right; 
+					margin:5px 5px 0px 0px;}
+		
+		.bbs p a{color:#000000; text-decoration:none;}
+		.bbs p a:hover{text-decoration:none; color:#aaaaff;}
+		</style>
+	</head>
+
+	<body>
+			
+			<div class="bbs">
+				
+				<h2>게시판 제목</h2>
+				<p><a href="#">더보기</a></p>
+
+				<ul>
+					
+					<li><a href="#">최근게시물 제목1</a></li>
+					<li><a href="#">최근게시물 제목2</a></li>
+					<li><a href="#">최근게시물 제목3</a></li>
+					<li><a href="#">최근게시물 제목4</a></li>
+				</ul>	
+			</div>
+			
+	</body>
+
+</html>

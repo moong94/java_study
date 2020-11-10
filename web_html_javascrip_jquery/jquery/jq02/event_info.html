@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {            background-color: #eef;        }
+        div  {            padding: 20px;                 }
+
+    </style>
+    <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+</head>
+<body>
+    <div id="log"></div>
+    <script>
+        $(document).mousemove( function (e) {
+            $("#log").text("e.pageX: " + e.pageX + ", e.pageY: " + e.pageY);
+
+        }); 
+	</script>
+</body>
+</html>

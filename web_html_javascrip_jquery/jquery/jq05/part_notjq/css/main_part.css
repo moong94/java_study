@@ -1,0 +1,51 @@
+﻿@charset "utf-8";
+
+#recomm_book { 
+	position:relative;
+	width:1003px; 
+	margin:0 auto; 
+	padding-bottom:10px; 
+	overflow:hidden; 
+	z-index:30; }/*z-index는 굳이 안써도 잘 됨*/
+
+	#book_frame { 
+		position:relative; left:0; width:200%; }
+
+	/*#book_frame:after { 
+		content:""; display:block; clear:both; } 없어도 되긴함*/
+
+	.bookcon { 
+		float:left; width:50%; padding-top:30px;}
+
+	/*.bookcon:after { 
+		content:""; display:block;clear:both; } 없어도 되긴함*/
+
+	.bookcon h2 {
+		text-align:right; padding:0 50px 0 0; }
+
+	/*.bookcon ul{ width:100%; } 없어도 되긴함*/
+
+	/*.bookcon ul:after { 
+		content:""; display:block;clear:both; }없어도 되긴 함*/
+
+	.bookcon li.pic { 
+		float:left; width:273px; 
+		position:relative;top:-50px; 
+		margin-bottom:-50px; padding-left:50px; }
+
+	.bookcon li.smr { 
+		float:right; width:489px; 
+		padding:50px 50px 0 0; }
+
+	.bookcon li.detail { 
+		float:right; width:430px; 
+		padding:50px 65px 0; }
+
+	#arrow a { position:absolute; top:120px; }
+
+	.prev { left:0; }
+	.next{ right:0; }
+	
+	#book_roll { position:absolute; left:48%; bottom:0; }
+	#book_roll li { display:inline; }
+

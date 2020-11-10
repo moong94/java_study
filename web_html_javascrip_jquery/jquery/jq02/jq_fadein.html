@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#fadeIn").click(function () {
+                $("#dog").fadeIn("slow");
+            });
+            $("#fadeOut").click(function () {
+                $("#dog").fadeOut("slow");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <button id="fadeIn">fadeIn()</button>
+    <button id="fadeOut">fadeOut()</button><br />
+    <img id="dog" src="dog.png"
+        alt="" width="120" height="100" style="display: none; position: relative;" />
+</body>
+</html>

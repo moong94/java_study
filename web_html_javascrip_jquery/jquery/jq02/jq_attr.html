@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+ <script src="http://code.jquery.com/jquery-1.10.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                alert($("#dog").attr("src"));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <img id="dog" src="dog.png"
+        alt="" width="120" height="100" /><br />
+    <button>attr()</button>
+</body>
+</html>

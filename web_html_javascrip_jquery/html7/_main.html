@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Web shop Page</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+</head>
+<body>
+    <header>
+        <h1>
+            <img src="images/shop.png" width="50" height="50" /><a href="#">Web Shop</a></h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="main.html">Home</a></li>
+            <li><a href="main.html">About Us</a></li>
+            <li><a href="main.html">News</a></li>
+            <li><a href="main.html">My Account</a></li>
+            <li><a href="main.html">Contacts</a></li>
+        </ul>
+    </nav>
+    <aside id="left">
+        <h4>카테고리</h4>
+        <ul>
+            <li><a target="iframe1" href="computer.html">컴퓨터</a></li>
+            <li><a target="iframe1" href="clothing.html">의류</a></li>
+            <li><a target="iframe1" href="music.html">음악</a></li>
+            <li><a target="iframe1" href="movie.html">영화</a></li>
+            <li><a target="iframe1" href="computer.html">스포츠/레저</a></li>
+            <li><a target="iframe1" href="computer.html">가구/인테리어</a></li>
+            <li><a target="iframe1" href="computer.html">식품</a></li>
+        </ul>
+    </aside>
+    <section id="main">
+        <article id="article1">
+            <iframe name="iframe1" src="computer.html" width="440" height="300" seamless></iframe>
+        </article>
+    </section>
+    <aside id="right">
+        <div id="shopcart">
+            <h4>Shopping Cart</h4>
+            현재 쇼핑카트에 물품이 없습니다.<br />
+            <a href="shopcart.html">쇼핑카트 보기</a>
+        </div>
+        <div id="login">
+            <h4>Log In</h4>
+            <form action="#">
+                아이디               
+                <input type="text" /><br />
+                패스워드               
+                <input type="password" /><br />
+                <input type="submit" value="로그인" />
+                <input type="reset" value="초기화" /><br />
+                <a href="register1.html" target="_blank" id="register">회원가입</a>
+                <a href="#" id="forgot">비밀번호분실</a>
+            </form>
+        </div>
+    </aside>
+    <footer>Copyright (c) 2013 Web Shop</footer>
+</body>
+</html>

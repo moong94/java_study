@@ -1,0 +1,25 @@
+@charset"utf-8";
+
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,
+blockquote,pre,abbr,address,cite,code,del,dfn,em,img,
+ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,
+fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,
+article,aside,canvas,details,figcaption,figure,footer,header,hgroup,
+menu,nav,section,summary,time,mark,audio,video{margin:0; padding:0;}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {  display: block; }
+/*html5 새로 추가된 요소들은 블록요소로 인식되지 않음. 이 요소들은 대부분 블록요소일 경우가 대부분이기때문에 한꺼번에 선언함.*/
+
+
+li { list-style:none; }
+img,fieldset,iframe{border:0;}
+/*IE에서 이미지에 링크가 걸릴 때 자동으로 테두리가 생성되므로 테두리제거*/
+img{ max-width:100%; }/*width값이 %로 된 이미지들이 브라우저 폭이 줄 경우 비례를 맞추어 줄도록 하기위해 사용하는데 현재는 태블릿용 css에 해당*/
+
+li img, dd img { vertical-align:top; }
+/*IE에서 때때로 li 속에 들어가는 이미지나 dd 속에 들어가는 이미지에 원치 않는 여백이 생성되는 브라우저 오류가 발생하는 경우가 있는데 이 명령이  그 오류를 없애줌*/
+input { vertical-align:middle; }
+/*hr{display:none;}
+구분선 목적이라 숨김*/
+
+#skip, .skip { font-size:0; width:0; height:0; line-height:0; position:absolute; left:-9999px; }

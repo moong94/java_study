@@ -1,0 +1,106 @@
+﻿<!doctype html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>테이블 스타일</title>
+	<style>
+		/*collapse가 표의 이중 테두리를 붙이는 역할을 한다*/
+		table,
+		th,
+		td {
+			border-collapse: collapse;
+			border-color: gray;
+			font-size: 0.9em;
+		}
+
+		table {
+			width: 900px;
+			height: 450px;
+			background: #ffffcc;
+			margin: 0px auto;
+		}
+
+		caption {
+			font-size: 1.5em;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+
+		th {
+			font-size: 1.1em;
+		}
+
+		th,
+		td {
+			padding: 15px 20px;
+			width: 100px;
+		}
+
+		thead th {
+			background: #3366ff;
+			color: #ffffff;
+			border-bottom: 6px solid #000033;
+		}
+
+		/*행간격 1.6, 수직정렬 위치 top*/
+		td {
+			line-height: 1.6;
+			vertical-align: top;
+		}
+
+		/*글자 중앙정렬, 수직정렬 위치 middle*/
+		tbody .aa {
+			text-align: center;
+			vertical-align: middle;
+		}
+	</style>
+</head>
+
+<body>
+	<table border="1">
+		<caption>업종별 모범거래기준 주요 내용 비교</caption>
+
+		<thead>
+			<tr>
+				<!--scope="col" : 열 방향으로 진행-->
+				<th scope="col">구분</th>
+				<th scope="col">제빵(4월)</th>
+				<th scope="col">피자(7월)</th>
+				<th scope="col">치킨(7월)</th>
+				<th scope="col">커피(11월)</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr>
+				<!--scope="row" : 행 방향으로 진행-->
+				<th scope="row">영업지역</th>
+				<td class="aa">500m</td>
+				<td class="aa">1,500m</td>
+				<td class="aa">800m</td>
+				<td class="aa">500m</td>
+			</tr>
+
+			<tr>
+				<th scope="row">광고</th>
+				<td>관련내용 없음<br />(분쟁없음)</td>
+				<td>총 광고비 사전동의<br />광고내역 송부 등</td>
+				<td>총 광고비 사전동의<br />광고내역 송부 등</td>
+				<td>관련내용 없음<br />(분쟁없음)</td>
+			</tr>
+
+			<tr>
+				<th scope="row">대금지급</th>
+				<td>관련내용 없음<br />(분쟁없음)</td>
+				<td>관련내용 없음<br />(분쟁없음)</td>
+				<td>관련내용 없음</td>
+				<td>월 1~2회 정산<br />정산기한 최소 7일 보장</td>
+			</tr>
+		</tbody>
+
+
+	</table>
+</body>
+
+</html>

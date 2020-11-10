@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>포지션 absolute에 xy좌표 주기</title>
+		<!--요놈은 내부 스타일시트로 ㄱㄱ-->
+ 		<style>
+			/*absolute는 다른 요소와 겹칠 수 있고 본래의 판에서 떨어져 나와 떠 있게 된다.*/
+			*{margin:0px; padding:0px;}
+			
+			body{margin:40px; 
+					font:0.8em "돋움", dotum;}
+					
+			/*속성을 조금 변경했다.*/		
+			.box{width:250px;
+					border:1px solid red;
+					position:relative;}/*position:relative;는 가장 마지막에 추가.*/
+					/*position:relative;속성이 있을때와 없을때의 차이를 살펴보자.*/
+
+			p{width:130px; height:80px;
+				padding:10px; color:#ffffff; 
+				font-weight:bold;}
+				
+			.mred{background:red;}
+			
+			/*이전의 absolute요소에 좌표값을 추가해보자.
+				left와 top속성을 추가하니 .box클래스를 부모로 인식하지 못하고 
+				영역 밖으로 벗어나게 된다. 이것은 브라우저 자체를 부모로 인식하기 때문이다.
+				결과 확인 후 .box에 position:relative;속성을 추가한 후 결과를 보자.
+				position:relative;속성을 통해 .box가 .mblue의 부모로 인식된다.*/
+			.mblue{background:blue; position:absolute;
+						left:50px; top:30px;}
+			.mgreen{background:green;}	
+		</style>	
+	</head>
+	
+	<body>
+		<div class="box">
+			<p class="mred">박스의 포지션 속성을 보자</p>
+			<p class="mblue">박스의 포지션 속성을 보자</p>
+			<p class="mgreen">박스의 포지션 속성을 보자</p>
+		</div>	
+	</body>
+
+</html>

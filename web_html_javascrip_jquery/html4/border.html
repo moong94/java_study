@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>border(선)</title>
+			<style>
+			
+			/*width:테두리 두께, color:테두리 색상, style:테두리 모양*/
+			p {border-width:20px; border-color:blue;}
+				.box1{border-style:none;}
+				.box2{border-style:hidden;}
+				.box3{border-style:dotted;}
+				.box4{border-style:dashed;}
+				.box5{border-style:solid;}
+				.box6{border-style:double;}
+				.box7{border-style:groove;}
+				.box8{border-style:ridge;}
+				.box9{border-style:inset;}
+				.box10{border:20px outset #ff0000}/*요런식으로도 쓸 수 있다*/	
+
+			.div1 {border:10px solid #00ff00}
+			
+			/*border의 영역(너비, 높이) 지정 가능*/
+			.div2 {border:10px solid red; width:200px; height:100px}
+			
+			/*.div3 {border-bottom:10px solid blue;} 네 귀퉁이중 한곳만 적용*/
+			
+			/*상, 우, 하, 좌에 각각 속성값 적용
+			(적용하려면 style, color등의 속성값에 border-를 붙여줘야 함 ㅠㅠ)*/
+			.div3 {border-width:10px 20px 30px 40px; border-style:solid; border-color:blue;}
+			</style>
+	</head>
+	
+	<body>
+
+		<p class="box1">박스의 테두리가 none으로 지정된경우</p>
+		<p class="box2">박스의 테두리가 hidden으로 지정된경우</p>
+		<p class="box3">박스의 테두리가 dotted로 지정된경우</p>
+		
+		<p class="box4">박스의 테두리가 dashed로 지정된경우</p>	
+		<p class="box5">박스의 테두리가 solid로 지정된경우</p><!--solid를 가장 많이씀-->	
+		<p class="box6">박스의 테두리가 double로 지정된경우</p>	
+		<p class="box7">박스의 테두리가 groove로 지정된경우</p>		
+		<p class="box8">박스의 테두리가 ridge로 지정된경우</p>
+		<p class="box9">박스의 테두리가 inset으로 지정된경우</p>	
+		<p class="box10">박스의 테두리가 outset으로 지정된경우</p>	
+		
+		<div class="div1">
+			<p>div의 테두리1</p>
+		</div>
+		
+		<div class="div2">
+			<p>div의 테두리2</p>
+		</div>
+		
+		<div class="div3">
+			<p>div의 테두리3</p>
+		</div>
+		
+	</body>
+	
+</html>
+
+
