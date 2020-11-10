@@ -204,6 +204,16 @@ class My_Panel extends JPanel implements ActionListener{
 				red_loc[0][1] = x;
 			}
 		}
+		if(y > 0 && x == 0) {
+			if(board[y - 1][x + 1] / 10 == 2) {
+				map_btn[y - 1][x + 1].setBackground(Color.RED);
+			}
+		}
+		else if(y > 0 && x == SIZE - 1) {
+			if(board[y - 1][x - 1] / 10 == 2) {
+				map_btn[y - 1][x - 1].setBackground(Color.RED);
+			}
+		}
 		if(y > 0 && y < SIZE - 1 && x > 0 && x < SIZE - 1 && board[y - 1][x - 1] / 10 == 2) {
 			map_btn[y - 1][x - 1].setBackground(Color.RED);
 		}
@@ -233,6 +243,18 @@ class My_Panel extends JPanel implements ActionListener{
 				red_loc[0][1] = x;
 			}
 		}
+		
+		if(y < SIZE - 1 && x == 0) {
+			if(board[y + 1][x + 1] / 10 == 1) {
+				map_btn[y + 1][x + 1].setBackground(Color.RED);
+			}
+		}
+		else if(y < SIZE - 1 && x == SIZE - 1) {
+			if(board[y + 1][x - 1] / 10 == 1) {
+				map_btn[y + 1][x - 1].setBackground(Color.RED);
+			}
+		}
+		
 		if(y > 0 && y < SIZE - 1 && x > 0 && x < SIZE - 1 && (board[y + 1][x + 1] / 10 == 1)) {
 			map_btn[y + 1][x + 1].setBackground(Color.RED);
 		}
