@@ -714,10 +714,12 @@ class My_Panel extends JPanel implements ActionListener{
 		}
 		if(p1_king_check == 1 && p2_king_check == 0) {
 			turn_btn.setText("P1 ½Â¸®");
+			status = 3;
 		}
 		
 		else if(p1_king_check == 0 && p2_king_check == 1) {
 			turn_btn.setText("P2 ½Â¸®");
+			status = 3;
 		}
 		
 	}
